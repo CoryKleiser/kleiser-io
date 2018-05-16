@@ -25,8 +25,8 @@ export class AboutComponent implements OnInit {
   ngOnInit() {
     this.showSoUserInfo();
     this.showSoTopTags();
-    this.showGithubProfile();
-    this.showGithubRepos();
+    // this.showGithubProfile();
+    // this.showGithubRepos();
   }
 
   showSoUserInfo(): void {

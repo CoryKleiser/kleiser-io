@@ -9,19 +9,19 @@
   </div>
   <div id="online">
     <h3>Check me out on some other sites</h3>
-    <div id="stackoverflow">
-      <h4>{{soUserInfo.display_name}} on <a href="{{soUserInfo.link}}" target="_blank">StackOverflow!</a></h4>
-      <img src="{{soUserInfo.profile_image}}">
-      <h5>Reputation: {{soUserInfo.reputation}}</h5>
-      <h5>Badges</h5>
-      <p>Gold: {{soUserInfo.badge_counts.gold}}</p>
-      <p>Silver: {{soUserInfo.badge_counts.silver}}</p>
-      <p>Bronze: {{soUserInfo.badge_counts.bronze}}</p>
-      <h5>My Top Tags</h5>
-      <ul>
-        <li *ngFor="let tag of soTopTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>
-      </ul>
-    </div>
+    <!--<div id="stackoverflow">-->
+      <!--<h4>{{soUserInfo.display_name}} on <a href="{{soUserInfo.link}}" target="_blank">StackOverflow!</a></h4>-->
+      <!--<img src="{{soUserInfo.profile_image}}">-->
+      <!--<h5>Reputation: {{soUserInfo.reputation}}</h5>-->
+      <!--<h5>Badges</h5>-->
+      <!--<p>Gold: {{soUserInfo.badge_counts.gold}}</p>-->
+      <!--<p>Silver: {{soUserInfo.badge_counts.silver}}</p>-->
+      <!--<p>Bronze: {{soUserInfo.badge_counts.bronze}}</p>-->
+      <!--<h5>My Top Tags</h5>-->
+      <!--<ul>-->
+        <!--<li *ngFor="let tag of soTopTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>-->
+      <!--</ul>-->
+    <!--</div>-->
     <div id="github">
     <h4>{{githubUserInfo.name}} on <a href="{{githubUserInfo.html_url}}">GitHub</a></h4>
     <img src="{{githubUserInfo.avatar_url}}">

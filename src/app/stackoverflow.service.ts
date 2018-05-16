@@ -1,24 +1,25 @@
 import { Injectable } from '@angular/core';
 
-import { fetch } from '../../node_modules/node-fetch';
+import { HttpClient } from '@angular/common/http';
+
 import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class StackoverflowService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  async fetchFromStackoverflow(method: string = ''): Observable {
+  fetchFromStackoverflow(method: string = ''): Observable<object> {
     const url = `https://api.stackexchange.com/2.2/users/6713829/${method}?site=stackoverflow`;
-    const response = await fetch(url);
-    return await response.json();
+    return this.http.get(url);
   }
 
-  async getUserInfo(): Observable {
-    const response = await this.fetchFromStackoverflow();
-    const userInfo = response.items[0];
-    console.log(userInfo);
-    return userInfo;
+  getUserInfo(): Observable<object> {
+    return this.fetchFromStackoverflow();
+  }
+
+  getTopTags(): Observable<object> {
+    return this.fetchFromStackoverflow('top-tags');
   }
 
 }

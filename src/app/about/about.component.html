@@ -5,13 +5,16 @@
 <h3>Multimedia Developer</h3>
 <p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
 <h3>Check me out on some other sites</h3>
-<h4>Stack Overflow</h4>
-<h1>{{userInfo}} on <a href="{{userInfo}}" target="_blank">StackOverflow!</a></h1>
-<img src="{{userInfo}}">
-<h2>Reputation: {{userInfo}}</h2>
-<h2>Badges</h2>
-<p>Gold: {{userInfo}}</p>
-<p>Silver: {{userInfo}}</p>
-<p>Bronze: {{userInfo}}</p>
+<h4>{{userInfo.display_name}} on <a href="{{userInfo.link}}" target="_blank">StackOverflow!</a></h4>
+<img src="{{userInfo.profile_image}}">
+<h5>Reputation: {{userInfo.reputation}}</h5>
+<h5>Badges</h5>
+<p>Gold: {{userInfo.badge_counts.gold}}</p>
+<p>Silver: {{userInfo.badge_counts.silver}}</p>
+<p>Bronze: {{userInfo.badge_counts.bronze}}</p>
+<h5>My Top Tags</h5>
+<ul>
+  <li *ngFor="let tag of topTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>
+</ul>
 <h4>GitHub</h4>
 <p>info here</p>

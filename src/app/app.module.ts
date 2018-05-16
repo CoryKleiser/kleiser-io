@@ -8,6 +8,7 @@ import { IntroComponent } from './intro/intro.component';
 import { WorkComponent } from './work/work.component';
 import { AboutComponent } from './about/about.component';
 import { StackoverflowService } from './stackoverflow.service';
+import { GithubService } from './github.service';
 
 
 @NgModule({
@@ -21,7 +22,7 @@ import { StackoverflowService } from './stackoverflow.service';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [StackoverflowService],
+  providers: [StackoverflowService, GithubService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

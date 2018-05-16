@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 import { StackoverflowService } from '../stackoverflow.service';
 import { GithubService } from '../github.service';
+import { StackoverflowUser } from '../stackoverflow-user';
+import {StackoverflowTags} from '../stackoverflow-tags';
+import {GithubUser} from '../github-user';
+import {GithubRepo} from '../github-repo';
 
 
 @Component({
@@ -10,10 +14,10 @@ import { GithubService } from '../github.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  soUserInfo: Object;
-  soTopTags: Array<object>;
-  githubUserInfo: Object;
-  githubRepos: Object;
+  soUserInfo: StackoverflowUser;
+  soTopTags: Array<StackoverflowTags>;
+  githubUserInfo: GithubUser;
+  githubRepos: Array<GithubRepo>;
 
   constructor(private soService: StackoverflowService,
               private githubService: GithubService) { }

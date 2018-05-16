@@ -9,6 +9,7 @@ import { WorkComponent } from './work/work.component';
 import { AboutComponent } from './about/about.component';
 import { StackoverflowService } from './stackoverflow.service';
 import { GithubService } from './github.service';
+import { EyeComponent } from './eye/eye.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { GithubService } from './github.service';
     AppComponent,
     IntroComponent,
     WorkComponent,
-    AboutComponent
+    AboutComponent,
+    EyeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,24 +1,34 @@
-<h1>About</h1>
-<h2>Cory Kleiser is currently a Systems Engineer for Cognizant Technology Solutions</h2>
-<h3>Programmer</h3>
-<p>I have great familiarity with the object oriented approach to design and development. Most of my experience derives from developing applications on the client-side. My language of choice is most definitely javascript and it's various frameworks.</p>
-<h3>Multimedia Developer</h3>
-<p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
-<h3>Check me out on some other sites</h3>
-<h4>{{soUserInfo.display_name}} on <a href="{{soUserInfo.link}}" target="_blank">StackOverflow!</a></h4>
-<img src="{{soUserInfo.profile_image}}">
-<h5>Reputation: {{soUserInfo.reputation}}</h5>
-<h5>Badges</h5>
-<p>Gold: {{soUserInfo.badge_counts.gold}}</p>
-<p>Silver: {{soUserInfo.badge_counts.silver}}</p>
-<p>Bronze: {{soUserInfo.badge_counts.bronze}}</p>
-<h5>My Top Tags</h5>
-<ul>
-  <li *ngFor="let tag of soTopTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>
-</ul>
-<h4>{{githubUserInfo.name}} on <a href="{{githubUserInfo.html_url}}">GitHub</a></h4>
-<img src="{{githubUserInfo.avatar_url}}">
-<h5>Followers: {{githubUserInfo.followers}}</h5>
-<ul>
-  <li *ngFor="let repo of githubRepos"><a href="{{repo.html_url}}">{{repo.name}}</a></li>
-</ul>
+<section id="about">
+  <h1>About</h1>
+  <div id="general">
+    <h2>Cory Kleiser is currently a Systems Engineer for Cognizant Technology Solutions</h2>
+    <h3>Programmer</h3>
+    <p>I have great familiarity with the object oriented approach to design and development. Most of my experience derives from developing applications on the client-side. My language of choice is most definitely javascript and it's various frameworks.</p>
+    <h3>Multimedia Developer</h3>
+    <p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
+  </div>
+  <div id="online">
+    <h3>Check me out on some other sites</h3>
+    <div id="stackoverflow">
+      <h4>{{soUserInfo.display_name}} on <a href="{{soUserInfo.link}}" target="_blank">StackOverflow!</a></h4>
+      <img src="{{soUserInfo.profile_image}}">
+      <h5>Reputation: {{soUserInfo.reputation}}</h5>
+      <h5>Badges</h5>
+      <p>Gold: {{soUserInfo.badge_counts.gold}}</p>
+      <p>Silver: {{soUserInfo.badge_counts.silver}}</p>
+      <p>Bronze: {{soUserInfo.badge_counts.bronze}}</p>
+      <h5>My Top Tags</h5>
+      <ul>
+        <li *ngFor="let tag of soTopTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>
+      </ul>
+    </div>
+    <div id="github">
+    <h4>{{githubUserInfo.name}} on <a href="{{githubUserInfo.html_url}}">GitHub</a></h4>
+    <img src="{{githubUserInfo.avatar_url}}">
+    <h5>Followers: {{githubUserInfo.followers}}</h5>
+    <ul>
+      <li *ngFor="let repo of githubRepos"><a href="{{repo.html_url}}">{{repo.name}}</a></li>
+    </ul>
+    </div>
+  </div>
+</section>

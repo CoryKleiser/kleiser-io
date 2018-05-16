@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-eye',
@@ -20,6 +20,11 @@ export class EyeComponent implements OnInit {
   ngOnInit() {
     const ctx: CanvasRenderingContext2D =
       this.canvasRef.nativeElement.getContext('2d');
+    setInterval(() => {
+      ctx.clearRect(0, 0, 320, 350);
+      this.drawMainTriangle(ctx);
+      this.drawEye(ctx);
+    }, 250);
     this.drawMainTriangle(ctx);
     this.drawEye(ctx);
   }
@@ -41,8 +46,8 @@ export class EyeComponent implements OnInit {
     ctx.lineTo(311.85, 311.85);
     ctx.lineTo(9.9, 311.85);
     ctx.clip();
-    ctx.beginPath()
-    for (let i = 0 ; i < 50000 ; i++) {
+    ctx.beginPath();
+    for (let i = 0 ; i < 70000 ; i++) {
       const x = Math.random() * 500;
       const y = Math.random() * 500;
       ctx.moveTo(x, y);
@@ -60,7 +65,7 @@ export class EyeComponent implements OnInit {
   }
 
   eyeOutline(ctx, radius) {
-    var rad = radius;
+    let rad = radius;
     ctx.strokeStyle = 'black';
     ctx.fillStyle = 'white';
     ctx.beginPath();
@@ -68,8 +73,8 @@ export class EyeComponent implements OnInit {
     ctx.arc(this.eye.x, this.eye.topLineY, rad, 3.927, 5.4979);
     ctx.stroke();
     ctx.fill();
-    for (var e = 1; e < 50; e++) {
-      for (var i = 1; i < 3; i++) {
+    for (let e = 1; e < 50; e++) {
+      for (let i = 1; i < 3; i++) {
         ctx.beginPath();
         ctx.arc(this.eye.x, this.eye.bottomLineY, rad, 0.785, 2.356);
         ctx.arc(this.eye.x, this.eye.topLineY, rad, 3.927, 5.4979);
@@ -82,7 +87,7 @@ export class EyeComponent implements OnInit {
 
   drawEye(ctx) {
     // outline
-    var eyeOutlineRadius = 94.5;
+    const eyeOutlineRadius = 94.5;
     this.eyeOutline(ctx, eyeOutlineRadius);
     // pupil
     ctx.fillStyle = '#38a6a6';
@@ -99,11 +104,11 @@ export class EyeComponent implements OnInit {
     ctx.lineTo(this.eye.x + 21, this.eye.x - 2.1);
     ctx.lineTo(this.eye.x - 21, this.eye.x - 2.1);
     ctx.fill();
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.arc(this.eye.x, this.eye.irisY, 15, 0, Math.PI * 2);
     ctx.fillStyle = 'fill';
     ctx.fill();
-    ctx.beginPath()
+    ctx.beginPath();
     ctx.arc(this.eye.x, this.eye.irisY, 7, 0, Math.PI * 2);
     ctx.fillStyle = 'white';
     ctx.fill();

@@ -10,6 +10,7 @@ import { AboutComponent } from './about/about.component';
 import { StackoverflowService } from './stackoverflow.service';
 import { GithubService } from './github.service';
 import { EyeComponent } from './eye/eye.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -18,11 +19,12 @@ import { EyeComponent } from './eye/eye.component';
     IntroComponent,
     WorkComponent,
     AboutComponent,
-    EyeComponent
+    EyeComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [StackoverflowService, GithubService],
   bootstrap: [AppComponent]

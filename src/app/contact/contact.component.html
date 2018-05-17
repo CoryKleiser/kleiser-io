@@ -1,19 +1,33 @@
-
-<div class="form-group">
-  <label for="name"></label>
-  <input [(ngModel)]="emailContent.name" id="name" class="form-control">
+<div class="container-fluid">
+  <fieldset>
+    <legend class="text-left col-sm-10 offset-sm-2">Your Info</legend>
+    <div class="form-group row">
+      <label for="name" class="col-sm-2 control-label text-center text-sm-right">Name</label>
+      <div class="col-sm-8">
+        <input [(ngModel)]="emailContent.name" id="name" class="form-control" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="email" class="col-sm-2 control-label text-center text-sm-right">Email</label>
+      <div class="col-sm-8">
+        <input [(ngModel)]="emailContent.email" id="email" class="form-control" required>
+      </div>
+    </div>
+  </fieldset>
+  <fieldset>
+    <legend class="text-left col-sm-10 offset-sm-2">Message Info</legend>
+    <div class="form-group row">
+      <label for="subject" class="col-sm-2 control-label text-center text-sm-right">Subject</label>
+      <div class="col-sm-8">
+        <input [(ngModel)]="emailContent.subject" id="subject" class="form-control" required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="message" class="col-sm-2 control-label text-center text-sm-right">Message</label>
+      <div class="col-sm-8">
+        <textarea [(ngModel)]="emailContent.message" id="message" class="form-control" required></textarea>
+      </div>
+    </div>
+  </fieldset>
+  <button type="submit" (click)="send()" class="btn btn-success col-sm-4 offset-sm-4">Send</button>
 </div>
-<div class="form-group">
-  <label for="email"></label>
-  <input [(ngModel)]="emailContent.email" id="email" class="form-control">
-</div>
-<div class="form-group">
-  <label for="subject"></label>
-  <input [(ngModel)]="emailContent.subject" id="subject" class="form-control">
-</div>
-<div class="form-group">
-  <label for="message"></label>
-  <textarea [(ngModel)]="emailContent.message" id="message" class="form-control"></textarea>
-</div>
-
-<button (click)="send()">Send</button>

@@ -2,6 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import { Email } from '../email';
 
+import { EmailService } from '../email.service';
+
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
@@ -9,15 +11,20 @@ import { Email } from '../email';
 })
 export class ContactComponent implements OnInit {
   emailContent: Email;
-  constructor() { }
+  constructor(private emailService: EmailService) { }
 
   ngOnInit() {
     this.emailContent = {
-      name: 'name',
-      email: 'email',
-      subject: 'subject',
-      message: 'message'
+      name: '',
+      email: '',
+      subject: '',
+      message: ''
     };
+  }
+
+  send() {
+    this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
+      .subscribe( res => console.log(res));
   }
 
 }

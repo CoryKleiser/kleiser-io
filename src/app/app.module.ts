@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -11,6 +12,7 @@ import { StackoverflowService } from './stackoverflow.service';
 import { GithubService } from './github.service';
 import { EyeComponent } from './eye/eye.component';
 import { ContactComponent } from './contact/contact.component';
+import {EmailService} from './email.service';
 
 
 @NgModule({
@@ -24,9 +26,10 @@ import { ContactComponent } from './contact/contact.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [StackoverflowService, GithubService],
+  providers: [StackoverflowService, GithubService, EmailService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

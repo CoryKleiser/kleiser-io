@@ -1,4 +1,4 @@
-<section id="about">
+<section id="about" class="container-fluid">
   <h1>About</h1>
   <div id="general">
     <h2>Cory Kleiser is currently a Systems Engineer for Cognizant Technology Solutions</h2>
@@ -7,28 +7,44 @@
     <h3>Multimedia Developer</h3>
     <p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
   </div>
-  <div id="online">
     <h3>Check me out on some other sites</h3>
-    <!--<div id="stackoverflow">-->
-      <!--<h4>{{soUserInfo.display_name}} on <a href="{{soUserInfo.link}}" target="_blank">StackOverflow!</a></h4>-->
-      <!--<img src="{{soUserInfo.profile_image}}">-->
-      <!--<h5>Reputation: {{soUserInfo.reputation}}</h5>-->
-      <!--<h5>Badges</h5>-->
-      <!--<p>Gold: {{soUserInfo.badge_counts.gold}}</p>-->
-      <!--<p>Silver: {{soUserInfo.badge_counts.silver}}</p>-->
-      <!--<p>Bronze: {{soUserInfo.badge_counts.bronze}}</p>-->
-      <!--<h5>My Top Tags</h5>-->
-      <!--<ul>-->
-        <!--<li *ngFor="let tag of soTopTags"><b>{{tag.tag_name | uppercase}}</b> &mdash; score: {{tag.answer_score}}</li>-->
-      <!--</ul>-->
-    <!--</div>-->
-    <div id="github">
-    <h4>{{githubUserInfo.name}} on <a href="{{githubUserInfo.html_url}}">GitHub</a></h4>
-    <img src="{{githubUserInfo.avatar_url}}">
-    <h5>Followers: {{githubUserInfo.followers}}</h5>
-    <ul>
-      <li *ngFor="let repo of githubRepos"><a href="{{repo.html_url}}">{{repo.name}}</a></li>
-    </ul>
+  <div id="online" class="row">
+    <div id="stackoverflow" class="card col-sm m-3">
+      <img src="{{soUserInfo.profile_image}}" class="card-img-top rounded-circle mx-auto">
+      <div class="card-body">
+        <h4>{{soUserInfo.display_name}} on StackOverflow!</h4>
+        <h5 class="card-text">Reputation: {{soUserInfo.reputation}}</h5>
+        <h5>My Top Tags</h5>
+        <ul class="list-group card-text">
+          <li *ngFor="let tag of soTopTags" class="list-group-item d-flex justify-content-between align-items-center">
+            <b>{{tag.tag_name | uppercase}}</b> <span class="badge badge-primary badge-pill">{{tag.answer_score}}</span>
+          </li>
+        </ul>
+        <h5 class="card-text">Badges</h5>
+        <div class="list-group card-text">
+          <p class="list-group-item d-flex justify-content-between align-items-center">Gold
+            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.gold}}</span></p>
+          <p class="list-group-item d-flex justify-content-between align-items-center">Silver
+            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.silver}}</span></p>
+          <p class="list-group-item d-flex justify-content-between align-items-center">Bronze
+            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.bronze}}</span></p>
+        </div>
+        <a href="{{soUserInfo.link}}" target="_blank" class="btn btn-primary mt-3">StackOverflow!</a>
+      </div>
+    </div>
+    <div id="github" class="card col-sm m-3">
+      <img src="{{githubUserInfo.avatar_url}}" class="card-img-top rounded-circle mx-auto">
+      <div class="card-body">
+        <h4 class="card-title">{{githubUserInfo.name}} on GitHub!</h4>
+        <h5 class="card-text">Followers: {{githubUserInfo.followers}}</h5>
+        <h5 class="card-text">Notable Repositories</h5>
+        <ul class="list-group card-text">
+          <li *ngFor="let repo of githubRepos" class="list-group-item list-group-item-action">{{repo.name}}
+            <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-primary float-right">Go</a>
+          </li>
+        </ul>
+        <a href="{{githubUserInfo.html_url}}" target="_blank" class="btn btn-primary mt-3">Check It Out!</a>
+      </div>
     </div>
   </div>
 </section>

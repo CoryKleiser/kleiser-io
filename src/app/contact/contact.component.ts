@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import { Email } from '../email';
 
 import { EmailService } from '../email.service';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +11,12 @@ import { EmailService } from '../email.service';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
+
+  name = new FormControl();
+  email = new FormControl();
+  subject = new FormControl();
+  message = new FormControl();
+
   emailContent: Email;
   constructor(private emailService: EmailService) { }
 
@@ -25,6 +32,10 @@ export class ContactComponent implements OnInit {
   send() {
     this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
       .subscribe( res => console.log(res));
+    this.name.reset();
+    this.email.reset();
+    this.subject.reset();
+    this.message.reset();
   }
 
 }

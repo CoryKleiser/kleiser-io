@@ -12,7 +12,8 @@ import { StackoverflowService } from './stackoverflow.service';
 import { GithubService } from './github.service';
 import { EyeComponent } from './eye/eye.component';
 import { ContactComponent } from './contact/contact.component';
-import {EmailService} from './email.service';
+import { EmailService } from './email.service';
+import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import {EmailService} from './email.service';
     WorkComponent,
     AboutComponent,
     EyeComponent,
-    ContactComponent
+    ContactComponent,
+    ForbiddenValidatorDirective,
   ],
   imports: [
     BrowserModule,

@@ -4,13 +4,37 @@
     <div class="form-group row">
       <label for="name" class="col-sm-2 control-label text-center text-sm-right">Name</label>
       <div class="col-sm-8">
-        <input [(ngModel)]="emailContent.name" id="name" class="form-control" required>
+        <div *ngIf="name.invalid && (name.dirty || name.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="name.errors.required">
+            Name is required.
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="name.errors.forbiddenInput">
+            Name cannot be bobo.
+          </div>
+        </div>
+        <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="bobo">
       </div>
     </div>
     <div class="form-group row">
       <label for="email" class="col-sm-2 control-label text-center text-sm-right">Email</label>
       <div class="col-sm-8">
-        <input [(ngModel)]="emailContent.email" id="email" class="form-control" required>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="email.errors.required">
+            Email is required.
+          </div>
+          <div *ngIf="email.errors.forbiddenInput">
+            Please enter a valid email.
+          </div>
+        </div>
+        <input [(ngModel)]="emailContent.email" #email="ngModel" id="email" class="form-control" required appForbiddenInput="^(?![A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})">
+
       </div>
     </div>
   </fieldset>
@@ -19,15 +43,32 @@
     <div class="form-group row">
       <label for="subject" class="col-sm-2 control-label text-center text-sm-right">Subject</label>
       <div class="col-sm-8">
-        <input [(ngModel)]="emailContent.subject" id="subject" class="form-control" required>
+        <div *ngIf="subject.invalid && (subject.dirty || subject.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="subject.errors.required">
+            Subject is required.
+          </div>
+        </div>
+        <input [(ngModel)]="emailContent.subject" #subject="ngModel" id="subject" class="form-control" required>
       </div>
     </div>
     <div class="form-group row">
       <label for="message" class="col-sm-2 control-label text-center text-sm-right">Message</label>
       <div class="col-sm-8">
-        <textarea [(ngModel)]="emailContent.message" id="message" class="form-control" required></textarea>
+        <div *ngIf="message.invalid && (message.dirty || message.touched)"
+             class="alert alert-danger">
+
+          <div *ngIf="message.errors.required">
+            Message is required.
+          </div>
+          <div *ngIf="message.errors.minlength">
+            Please be a little bit more detailed.
+          </div>
+        </div>
+        <textarea [(ngModel)]="emailContent.message" #message="ngModel" id="message" class="form-control" required minlength="25"></textarea>
       </div>
     </div>
   </fieldset>
-  <button type="submit" (click)="send()" class="btn btn-success col-sm-4 offset-sm-4">Send</button>
+  <button *ngIf="!name.errors && !email.errors && !subject.errors && !message.errors" type="submit" (click)="send()" class="btn btn-success col-sm-4 offset-sm-4">Send</button>
 </div>

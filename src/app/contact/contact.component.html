@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<section class="container-fluid">
   <h1 class="text-center">Contact Me</h1>
   <fieldset>
     <legend class="text-left col-sm-10 offset-sm-2">Your Info</legend>
@@ -72,4 +72,4 @@
     </div>
   </fieldset>
   <button *ngIf="!name.errors && !email.errors && !subject.errors && !message.errors" type="submit" (click)="send(); name.reset(); email.reset(); subject.reset(); message.reset();" class="btn btn-success col-sm-4 offset-sm-4">Send</button>
-</div>
+</section>

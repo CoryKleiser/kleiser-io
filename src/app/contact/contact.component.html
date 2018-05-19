@@ -16,10 +16,10 @@
               Name must be at least 4 characters long.
             </div>
             <div *ngIf="name.errors.forbiddenInput">
-              Name cannot be bobo.
+              Name cannot be name.
             </div>
           </div>
-          <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="bobo">
+          <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="name">
         </div>
       </div>
       <div class="form-group row">

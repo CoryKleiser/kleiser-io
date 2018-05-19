@@ -1,56 +1,58 @@
 <section id="about" class="container-fluid">
-  <h1>About</h1>
-  <div id="general">
-    <h2>Cory Kleiser is currently a Systems Engineer for Cognizant Technology Solutions</h2>
-    <div class="jumbotron">
-      <h3>Programmer</h3>
-      <p>I have great familiarity with the object oriented approach to design and development. Most of my experience derives from developing applications on the client-side. My language of choice is most definitely javascript and it's various frameworks.</p>
+  <div>
+    <h1 class="text-center">About</h1>
+    <div id="general">
+      <h2 class="text-center">Cory Kleiser is currently a Systems Engineer for Cognizant Technology Solutions</h2>
+      <div class="jumbotron">
+        <h3>Programmer</h3>
+        <p>I have great familiarity with the object oriented approach to design and development. Most of my experience derives from developing applications on the client-side. My language of choice is most definitely javascript and it's various frameworks.</p>
+      </div>
+      <div class="jumbotron">
+        <h3>Multimedia Developer</h3>
+        <p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
+      </div>
     </div>
-    <div class="jumbotron">
-      <h3>Multimedia Developer</h3>
-      <p>Although my studies are primarily focused in web development, I am a competent producer of many other mediums. The experience and knowledge I gain when creating various types of content is invaluable when I am developing an application or website.</p>
-    </div>
-  </div>
-  <div class="jumbotron">
-    <h3>Check me out on some other sites</h3>
-  <div id="online" class="row">
-    <div id="stackoverflow" class="card col-sm m-3">
-      <img src="{{soUserInfo.profile_image}}" class="card-img-top rounded-circle mx-auto pt-4">
-      <div class="card-body d-flex flex-column">
-        <h4>{{soUserInfo.display_name}} on StackOverflow!</h4>
-        <h5 class="card-text p-3">Reputation: {{soUserInfo.reputation}}</h5>
-        <h5 class="cart-text p-3">My Top Tags</h5>
-        <ul class="list-group card-text">
-          <li *ngFor="let tag of soTopTags" class="list-group-item d-flex justify-content-between align-items-center">
-            <b>{{tag.tag_name | uppercase}}</b> <span class="badge badge-primary badge-pill">{{tag.answer_score}}</span>
-          </li>
-        </ul>
-        <h5 class="card-text p-3">Badges</h5>
-        <div class="list-group card-text p-3">
-          <p class="list-group-item d-flex justify-content-between align-items-center">Gold
-            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.gold}}</span></p>
-          <p class="list-group-item d-flex justify-content-between align-items-center">Silver
-            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.silver}}</span></p>
-          <p class="list-group-item d-flex justify-content-between align-items-center">Bronze
-            <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.bronze}}</span></p>
+    <div>
+      <h3 class="text-center">Check me out on some other sites</h3>
+    <div id="online" class="row">
+      <div id="stackoverflow" class="card col-sm m-3">
+        <img src="{{soUserInfo.profile_image}}" class="card-img-top rounded-circle mx-auto pt-4">
+        <div class="card-body d-flex flex-column">
+          <h4>{{soUserInfo.display_name}} on StackOverflow!</h4>
+          <h5 class="card-text p-3">Reputation: {{soUserInfo.reputation}}</h5>
+          <h5 class="cart-text p-3">My Top Tags</h5>
+          <ul class="list-group card-text">
+            <li *ngFor="let tag of soTopTags" class="list-group-item d-flex justify-content-between align-items-center">
+              <b>{{tag.tag_name | uppercase}}</b> <span class="badge badge-primary badge-pill">{{tag.answer_score}}</span>
+            </li>
+          </ul>
+          <h5 class="card-text p-3">Badges</h5>
+          <div class="list-group card-text p-3">
+            <p class="list-group-item d-flex justify-content-between align-items-center">Gold
+              <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.gold}}</span></p>
+            <p class="list-group-item d-flex justify-content-between align-items-center">Silver
+              <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.silver}}</span></p>
+            <p class="list-group-item d-flex justify-content-between align-items-center">Bronze
+              <span class="badge badge-primary badge-pill">{{soUserInfo.badge_counts.bronze}}</span></p>
+          </div>
+          <a href="{{soUserInfo.link}}" target="_blank" class="btn btn-primary btn-block mt-auto">Check It Out!</a>
         </div>
-        <a href="{{soUserInfo.link}}" target="_blank" class="btn btn-primary btn-block mt-auto">Check It Out!</a>
+      </div>
+      <div id="github" class="card col-sm m-3">
+        <img src="{{githubUserInfo.avatar_url}}" class="card-img-top rounded-circle mx-auto pt-4">
+        <div class="card-body d-flex flex-column">
+          <h4 class="card-title">{{githubUserInfo.name}} on GitHub!</h4>
+          <h5 class="card-text">Followers: {{githubUserInfo.followers}}</h5>
+          <h5 class="card-text">Notable Repositories</h5>
+          <ul class="list-group card-text p-3">
+            <li *ngFor="let repo of githubRepos" class="list-group-item list-group-item-action">{{repo.name}}
+              <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-primary float-right"><span class="oi oi-external-link"></span></a>
+            </li>
+          </ul>
+          <a href="{{githubUserInfo.html_url}}" target="_blank" class="btn btn-primary mt-auto">Check It Out!</a>
+        </div>
       </div>
     </div>
-    <div id="github" class="card col-sm m-3">
-      <img src="{{githubUserInfo.avatar_url}}" class="card-img-top rounded-circle mx-auto pt-4">
-      <div class="card-body d-flex flex-column">
-        <h4 class="card-title">{{githubUserInfo.name}} on GitHub!</h4>
-        <h5 class="card-text">Followers: {{githubUserInfo.followers}}</h5>
-        <h5 class="card-text">Notable Repositories</h5>
-        <ul class="list-group card-text p-3">
-          <li *ngFor="let repo of githubRepos" class="list-group-item list-group-item-action">{{repo.name}}
-            <a href="{{repo.html_url}}" target="_blank" class="btn btn-sm btn-primary float-right"><span class="oi oi-external-link"></span></a>
-          </li>
-        </ul>
-        <a href="{{githubUserInfo.html_url}}" target="_blank" class="btn btn-primary mt-auto">Check It Out!</a>
-      </div>
     </div>
-  </div>
   </div>
 </section>

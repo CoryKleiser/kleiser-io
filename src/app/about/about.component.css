@@ -1,3 +1,13 @@
 .card-img-top{
   max-width: 128px;
 }
+
+section{
+  width: 100vw;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-image: url("../../assets/images/bluelake.jpeg");
+}
+

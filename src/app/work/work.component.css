@@ -8,5 +8,5 @@ section{
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-color: lightgrey;
+  background-image: url("../../assets/images/bluelake.jpeg");
 }

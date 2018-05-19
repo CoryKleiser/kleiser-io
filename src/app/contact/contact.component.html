@@ -72,6 +72,8 @@
         </div>
       </div>
     </fieldset>
-    <button *ngIf="!name.errors && !email.errors && !subject.errors && !message.errors" type="submit" (click)="send(); name.reset(); email.reset(); subject.reset(); message.reset();" class="btn btn-success col-sm-4 offset-sm-4">Send</button>
+    <button *ngIf="!name.errors && !email.errors && !subject.errors && !message.errors" type="submit"
+            (click)="send(); name.reset(); email.reset(); subject.reset(); message.reset();"
+            class="btn btn-success col-sm-4">Send</button>
   </div>
 </section>

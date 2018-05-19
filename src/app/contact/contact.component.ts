@@ -32,10 +32,6 @@ export class ContactComponent implements OnInit {
   send() {
     this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
       .subscribe( res => console.log(res));
-    this.name.reset();
-    this.email.reset();
-    this.subject.reset();
-    this.message.reset();
   }
 
 }

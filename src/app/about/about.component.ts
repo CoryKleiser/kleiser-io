@@ -23,8 +23,8 @@ export class AboutComponent implements OnInit {
               private githubService: GithubService) { }
 
   ngOnInit() {
-    // this.showSoUserInfo();
-    // this.showSoTopTags();
+    this.showSoUserInfo();
+    this.showSoTopTags();
     this.showGithubProfile();
     this.showGithubRepos();
   }

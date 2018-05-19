@@ -18,6 +18,7 @@ export class AboutComponent implements OnInit {
   soTopTags: Array<StackoverflowTags>;
   githubUserInfo: GithubUser;
   githubRepos: Array<GithubRepo>;
+  totalRepos: number;
 
   constructor(private soService: StackoverflowService,
               private githubService: GithubService) { }
@@ -46,7 +47,10 @@ export class AboutComponent implements OnInit {
 
   showGithubRepos(): void {
     this.githubService.getUserRepos('corykleiser')
-      .subscribe(githubRepos => this.githubRepos = githubRepos.filter(repo => repo.watchers > 0));
+      .subscribe(githubRepos => {
+        this.totalRepos = githubRepos.length;
+        this.githubRepos = githubRepos.filter(repo => repo.watchers > 0);
+      });
   }
 
 }

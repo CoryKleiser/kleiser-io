@@ -1,0 +1,12 @@
+section{
+  width: 100vw;
+
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: lightgrey;
+}

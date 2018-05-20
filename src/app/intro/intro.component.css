@@ -13,3 +13,23 @@ section{
   background-attachment: fixed;
   background-color: orange;
 }
+
+h1 {
+  color: #3b5ba6;
+}
+
+h2, h3 {
+  color: #38a6a6;
+  font-size: 24px;
+}
+
+p {
+  color: #2f8b6b;
+  font-size: 1.5em;
+}
+
+ul {
+  color: #38a638;
+  font-weight: bold;
+  font-size: 1.3em;
+}

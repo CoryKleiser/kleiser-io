@@ -75,5 +75,11 @@
     <button *ngIf="!name.errors && !email.errors && !subject.errors && !message.errors" type="submit"
             (click)="send(); name.reset(); email.reset(); subject.reset(); message.reset();"
             class="btn btn-success col-sm-4">Send</button>
+    <div *ngIf="this.error" class="alert alert-danger col-sm-4 offset-sm-4" role="alert">
+      Whoops! Something went terribly wrong :(<br>Please try again later.
+    </div>
+    <div *ngIf="this.error == null" class="alert alert-success col-sm-4 offset-sm-4" role="alert">
+      Thanks for the message.<br>I will be getting back to you soon.
+    </div>
   </div>
 </section>

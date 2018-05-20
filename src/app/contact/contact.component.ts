@@ -16,6 +16,7 @@ export class ContactComponent implements OnInit {
   email = new FormControl();
   subject = new FormControl();
   message = new FormControl();
+  error: any = '';
 
   emailContent: Email;
   constructor(private emailService: EmailService) { }
@@ -31,7 +32,10 @@ export class ContactComponent implements OnInit {
 
   send() {
     this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
-      .subscribe( res => console.log(res));
+      .subscribe( res => {
+        this.error = res;
+        setTimeout(() => this.error = '', 5000);
+      });
   }
 
 }

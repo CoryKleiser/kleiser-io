@@ -21,7 +21,7 @@ export class EmailService {
       message: message,
       email: fromEmail
     };
-    return this.http.post('http://localhost:3000/api/sendemail', body, httpOptions)
+    return this.http.post('http://18.221.46.221:3000/api/sendemail', body, httpOptions)
       .pipe(catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse) {

@@ -19,17 +19,17 @@ h1 {
 }
 
 h2, h3 {
-  color: #38a6a6;
+  color: #3b5ba6;
   font-size: 24px;
 }
 
 p {
-  color: #2f8b6b;
+  color: #38a6a6;
   font-size: 1.5em;
 }
 
 ul {
-  color: #38a638;
+  color: #666;
   font-weight: bold;
   font-size: 1.3em;
 }

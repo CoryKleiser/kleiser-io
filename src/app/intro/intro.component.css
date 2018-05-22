@@ -1,7 +1,7 @@
 section{
   width: 100vw;
   height: 100vh;
-  min-height: 812px;
+  min-height: 400px;
 
   display: flex;
   align-items: center;

@@ -14,6 +14,7 @@ import { EyeComponent } from './eye/eye.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './email.service';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
+import { NavComponent } from './nav/nav.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { ForbiddenValidatorDirective } from './shared/forbidden-validator-direct
     EyeComponent,
     ContactComponent,
     ForbiddenValidatorDirective,
+    NavComponent,
   ],
   imports: [
     BrowserModule,

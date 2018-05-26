@@ -23,7 +23,7 @@ export class NavComponent implements OnInit {
   }
 
   moveToHome(): void {
-    this.home.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'start'});
+    this.home.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     this.showNav = false;
   }
   moveToAbout(): void {
@@ -31,11 +31,11 @@ export class NavComponent implements OnInit {
     this.showNav = false;
   }
   moveToWork(): void {
-    this.work.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'start'});
+    this.work.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     this.showNav = false;
   }
   moveToContact(): void {
-    this.contact.scrollIntoView({behavior: 'smooth', block: 'end', inline: 'start'});
+    this.contact.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
     this.showNav = false;
   }
 

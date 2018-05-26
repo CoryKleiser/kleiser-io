@@ -4,7 +4,10 @@ span{
   right: 0;
   top: 3%;
   margin-right: 5px;
+  padding: 5px;
+  border-radius: 3px;
   z-index: 999;
+  background-color: rgba(128, 128, 128, .5);
 }
 
 .list-group{

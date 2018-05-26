@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import { Email } from '../email';
 
 import { EmailService } from '../email.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -11,7 +11,6 @@ import {FormControl, FormGroup} from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-
   name = new FormControl();
   email = new FormControl();
   subject = new FormControl();

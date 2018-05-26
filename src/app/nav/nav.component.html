@@ -1,7 +1,7 @@
-<span *ngIf="showNav === false" class="oi oi-expand-right" (mouseover)="showNav = true"></span>
+<span class="oi oi-expand-right" (mouseover)="showNav = true"></span>
 <ul class="list-group" *ngIf="showNav===true" (mouseleave)="showNav = false">
-  <a href="#intro" class="list-group-item list-group-item-active">Home</a>
-  <a href="#about" class="list-group-item list-group-item-active">About</a>
-  <a href="#work" class="list-group-item list-group-item-active">Work</a>
-  <a href="#contact" class="list-group-item list-group-item-active">Contact</a>
+  <li (click)="moveToHome()" class="list-group-item list-group-item-active">Home</li>
+  <li (click)="moveToAbout()" class="list-group-item list-group-item-active">About</li>
+  <li (click)="moveToWork()" class="list-group-item list-group-item-active">Work</li>
+  <li (click)="moveToContact()" class="list-group-item list-group-item-active">Contact</li>
 </ul>

@@ -31,7 +31,7 @@ import { NavComponent } from './nav/nav.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [StackoverflowService, GithubService, EmailService],
   bootstrap: [AppComponent]

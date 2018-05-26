@@ -15,5 +15,8 @@ span{
 
 .list-group-item{
   background-color: #3b5ba6;
+}
+
+li{
   color: orange;
 }

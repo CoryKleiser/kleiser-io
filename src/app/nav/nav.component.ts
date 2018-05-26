@@ -16,7 +16,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit() {
     this.showNav = false;
-    this.home = document.getElementById('into');
+    this.home = document.getElementById('intro');
     this.about = document.getElementById('about');
     this.work = document.getElementById('work');
     this.contact = document.getElementById('contact');

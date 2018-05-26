@@ -18,6 +18,7 @@ span{
 
 .list-group-item{
   background-color: #3b5ba6;
+  cursor: pointer;
 }
 
 li{

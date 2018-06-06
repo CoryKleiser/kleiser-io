@@ -15,6 +15,18 @@ section{
   background-color: rgba(255, 165, 0, 0.6);
 }
 
+.badge-gold{
+  background-color: #FFCC01;
+}
+
+.badge-silver{
+  background-color: #B4B8BC;
+}
+
+.badge-bronze{
+  background-color: #D1A684;
+}
+
 @media (max-width: 767px) {
   h1, h2, h3  {
     font-weight: bold;

@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 import { catchError } from 'rxjs/operators';
 
+import { sendEmailUrl } from './endpoints/enpoints';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json'
@@ -21,7 +23,7 @@ export class EmailService {
       message: message,
       email: fromEmail
     };
-    return this.http.post('http://18.221.46.221:3000/api/sendemail', body, httpOptions)
+    return this.http.post(sendEmailUrl, body, httpOptions)
       .pipe(catchError(this.handleError));
   }
   private handleError(error: HttpErrorResponse) {

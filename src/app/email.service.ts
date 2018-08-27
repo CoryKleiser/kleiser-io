@@ -23,8 +23,7 @@ export class EmailService {
       message: message,
       email: fromEmail
     };
-    return this.http.post(sendEmailUrl, body, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.post(sendEmailUrl, body, httpOptions);
   }
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -32,7 +32,12 @@ export class ContactComponent implements OnInit {
   send() {
     this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
       .subscribe( res => {
-        this.error = res;
+        console.log(res);
+        if (res.statusCode !== 201) {
+          this.error = res;
+        } else {
+          this.error = null;
+        }
         setTimeout(() => this.error = '', 5000);
       });
   }

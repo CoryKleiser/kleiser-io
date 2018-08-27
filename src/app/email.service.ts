@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import { catchError } from 'rxjs/operators';
-
 import { sendEmailUrl } from './endpoints/enpoints';
+import {Email} from './email';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -16,13 +15,8 @@ export class EmailService {
 
   constructor(private http: HttpClient) { }
 
-  sendEmail(name: string, subject: string, message: string, fromEmail: string): any {
-    const body = {
-      name: name,
-      subject: subject,
-      message: message,
-      email: fromEmail
-    };
+  sendEmail(emailContent: Email): any {
+    const body = emailContent;
     return this.http.post(sendEmailUrl, body, httpOptions);
   }
   private handleError(error: HttpErrorResponse) {

@@ -30,7 +30,7 @@ export class ContactComponent implements OnInit {
   }
 
   send() {
-    this.emailService.sendEmail(this.emailContent.name, this.emailContent.subject, this.emailContent.message, this.emailContent.email)
+    this.emailService.sendEmail(this.emailContent)
       .subscribe( res => {
         console.log(res);
         if (res.statusCode !== 201) {

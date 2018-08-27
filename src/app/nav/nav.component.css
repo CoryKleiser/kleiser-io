@@ -2,8 +2,8 @@ span{
   position: fixed;
   font-size: 2em;
   right: 0;
-  top: 3%;
-  margin-right: 5px;
+  top: 0;
+  margin: 5px;
   padding: 5px;
   border-radius: 3px;
   z-index: 999;
@@ -12,6 +12,7 @@ span{
 
 .list-group{
   position: fixed;
+  width: 60%;
   right: 0;
   z-index: 999;
 }
@@ -19,8 +20,35 @@ span{
 .list-group-item{
   background-color: #3b5ba6;
   cursor: pointer;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.list-group-item:hover{
+  background-color: #3B70BB;
+}
+
+.list-group-item:active{
+  background-color: #38458C;
 }
 
 li{
   color: orange;
+}
+
+@media(min-width: 576px) {
+  .list-group {
+    width: 33%;
+  }
+}
+@media(min-width: 768px) {
+  .list-group {
+    width: 16.5%;
+  }
+}
+@media(min-width: 992px) {
+  .list-group {
+    width: auto;
+  }
 }

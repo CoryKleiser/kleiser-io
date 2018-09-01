@@ -4,11 +4,9 @@
     <fieldset>
       <legend class="text-left col-sm-10 offset-sm-2">Your Info</legend>
       <div class="form-group row">
-        <label for="name" class="col-sm-2 control-label text-center text-sm-right">Name</label>
-        <div class="col-sm-8">
+        <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="name.invalid && (name.dirty || name.touched)"
-               class="alert alert-danger">
-
+               class="col-sm-8 offset-sm-2 alert alert-danger">
             <div *ngIf="name.errors.required">
               Name is required.
             </div>
@@ -19,14 +17,16 @@
               Name cannot be name.
             </div>
           </div>
+        </div>
+        <label for="name" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Name</label>
+        <div class="col-sm-8 order-2">
           <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="name">
         </div>
       </div>
       <div class="form-group row">
-        <label for="email" class="col-sm-2 control-label text-center text-sm-right">Email</label>
-        <div class="col-sm-8">
+        <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
-               class="alert alert-danger">
+               class="col-sm-8 offset-sm-2 alert alert-danger">
 
             <div *ngIf="email.errors.required">
               Email is required.
@@ -35,31 +35,33 @@
               Please enter a valid email.
             </div>
           </div>
+        </div>
+        <label for="email" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Email</label>
+        <div class="col-sm-8 order-2">
           <input [(ngModel)]="emailContent.email" #email="ngModel" id="email" class="form-control" required appForbiddenInput="^(?![A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})">
-
         </div>
       </div>
     </fieldset>
     <fieldset>
       <legend class="text-left col-sm-10 offset-sm-2">Message Info</legend>
       <div class="form-group row">
-        <label for="subject" class="col-sm-2 control-label text-center text-sm-right">Subject</label>
-        <div class="col-sm-8">
+        <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="subject.invalid && (subject.dirty || subject.touched)"
-               class="alert alert-danger">
-
+               class="col-sm-8 offset-sm-2 alert alert-danger">
             <div *ngIf="subject.errors.required">
               Subject is required.
             </div>
           </div>
+        </div>
+        <label for="subject" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Subject</label>
+        <div class="col-sm-8 order-2">
           <input [(ngModel)]="emailContent.subject" #subject="ngModel" id="subject" class="form-control" required>
         </div>
       </div>
       <div class="form-group row">
-        <label for="message" class="col-sm-2 control-label text-center text-sm-right">Message</label>
-        <div class="col-sm-8">
+        <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="message.invalid && (message.dirty || message.touched)"
-               class="alert alert-danger">
+               class="col-sm-8 offset-sm-2 alert alert-danger">
 
             <div *ngIf="message.errors.required">
               Message is required.
@@ -68,6 +70,9 @@
               Please be a little bit more detailed.
             </div>
           </div>
+        </div>
+        <label for="message" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Message</label>
+        <div class="col-sm-8 order-2">
           <textarea [(ngModel)]="emailContent.message" #message="ngModel" id="message" class="form-control" required minlength="25"></textarea>
         </div>
       </div>

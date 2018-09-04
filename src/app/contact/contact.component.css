@@ -12,3 +12,24 @@ section{
   background-attachment: fixed;
   background-color: orange;
 }
+
+.notification {
+  position: fixed;
+  min-width: 90vw;
+  top: 0;
+  right: 5vw;
+  margin-top: 15px;
+}
+
+@media (min-width: 576px){
+  .notification{
+    min-width: 50vw;
+    right: 15px;
+  }
+}
+
+@media (min-width: 768px){
+  .notification{
+    min-width: 30vw;
+  }
+}

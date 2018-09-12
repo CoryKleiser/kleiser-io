@@ -1,4 +1,4 @@
-<span class="oi oi-menu" (mouseover)="showNav = true"></span>
+<span class="oi oi-menu" (mouseover)="showNavOnHover()" (click)="showNavOnTouch()"></span>
 <ul class="list-group" *ngIf="showNav===true" (mouseleave)="showNav = false">
   <li (click)="moveToHome()" class="list-group-item list-group-item-active">Home</li>
   <li (click)="moveToAbout()" class="list-group-item list-group-item-active">About</li>

@@ -13,5 +13,31 @@ describe('Navigation Tests', () => {
     cy.get('[data-cy=nav-list]').trigger('mouseleave');
     cy.get('[data-cy=nav-list]').should('not.exist');
   });
-  it('')
+  it('scrolls to about sections when user clicks About nav item', () => {
+    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
+    cy.get('[data-cy=nav-about-item').click();
+    cy.wait(500).then(() => {
+      cy.get('[data-cy=about-section]').then($el => {
+        expect($el[0].getBoundingClientRect().top).to.equal(0);
+      });
+    });
+  });
+  it('scrolls to work when user clicks Work nav item', () => {
+    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
+    cy.get('[data-cy=nav-work-item').click();
+    cy.wait(1000).then(() => {
+      cy.get('[data-cy=work-section]').then($el => {
+        expect($el[0].getBoundingClientRect().top).to.equal(0);
+      });
+    });
+  });
+  it('scrolls to contact when user clicks contact nav item', () => {
+    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
+    cy.get('[data-cy=nav-contact-item').click();
+    cy.wait(1250).then(() => {
+      cy.get('[data-cy=contact-section]').then($el => {
+        expect($el[0].getBoundingClientRect().top).to.equal(0);
+      });
+    });
+  });
 });

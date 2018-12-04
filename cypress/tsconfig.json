@@ -1,13 +1,17 @@
 {
   "compilerOptions": {
     "strict": true,
-      "baseUrl": "../node_modules",
-      "target": "es5",
-      "lib": ["es5", "dom"],
-      "types": ["cypress"]
+    "baseUrl": "../node_modules",
+    "target": "es5",
+    "sourceMap": true,
+    "module": "commonjs",
+    "lib": ["es5", "dom"],
+    "types": ["cypress"],
+    "experimentalDecorators": true
   },
   "include": [
     "**/*.ts",
     "../node_modules/cypress/types/index.d.ts"
-  ]
+  ],
+  "compileOnSave": false
 }

@@ -8,14 +8,14 @@ describe('StackOverflow Section Tests', () => {
     cy.visit('/');
   });
   it('displays top tags on load', () => {
-    cy.get('#stackoverflow > .card-body > ul.list-group > li')
+    cy.get('[data-cy=top-tags]')
       .should('have.length', 4);
   });
   it('displays user image on load', () => {
     cy.get('#stackoverflow > .card-img-top').should('have.attr', 'src').and('include', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/99/MarioSMBW.png/220px-MarioSMBW.png')
   });
   it('displays user name on load', () => {
-    cy.get('#stackoverflow > .card-body > h4').contains('Mario');
+    cy.get('[data-cy=so-header]').contains('Mario');
   });
   it('displays user reputation on load', () => {
     // TODO: Implement

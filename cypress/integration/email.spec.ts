@@ -6,27 +6,27 @@ describe('Email Form Test', () => {
 
   // @ts-ignore
   const typeName = (name) => {
-    return cy.get('#name')
+    return cy.get('[data-cy=contact-name]')
       .focus()
       .type(name);
   };
   // @ts-ignore
   const typeEmail = (email) => {
-    return cy.get('#email')
+    return cy.get('[data-cy=contact-email]')
       .focus()
       .type(email);
   };
 
   // @ts-ignore
   const typeSubject = (subject) => {
-    return cy.get('#subject')
+    return cy.get('[data-cy=message-subject]')
       .focus()
       .type(subject);
   };
 
   // @ts-ignore
   const typeMessage = (message) => {
-    return cy.get('#message')
+    return cy.get('[data-cy=message-body]')
       .focus()
       .type(message);
   };
@@ -55,7 +55,7 @@ describe('Email Form Test', () => {
   });
 
   it('submit button is disabled with no input', () => {
-    cy.get('.container-fluid > .btn').should('be.disabled');
+    cy.get('[data-cy=contact-submit]').should('be.disabled');
   });
 
   it('submit button is not disabled when proper input is entered', () => {
@@ -63,7 +63,7 @@ describe('Email Form Test', () => {
     typeEmail(typedEmail);
     typeSubject(typedSubject);
     typeMessage(typedMessage);
-    cy.get('.container-fluid > .btn').should('not.be.disabled');
+    cy.get('[data-cy=contact-submit]').should('not.be.disabled');
   });
 
 });

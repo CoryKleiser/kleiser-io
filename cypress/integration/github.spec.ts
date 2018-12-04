@@ -8,6 +8,6 @@ describe('Github Section Tests', () => {
     cy.visit('/');
   });
   it('displays name from user info', () => {
-    cy.get('.card-title').contains('Mario');
+    cy.get('[data-cy=gh-header]').contains('Mario');
   });
 });

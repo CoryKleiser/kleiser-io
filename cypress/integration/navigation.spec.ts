@@ -1,5 +1,5 @@
 describe('Navigation Tests', () => {
-  beforeEach(() => {
+  before(() => {
     cy.server();
     cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/top-tags?site=stackoverflow', 'fixture:stackoverflow.topTags.json');
     cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/?site=stackoverflow', 'fixture:stackoverflow.userInfo.json');
@@ -18,7 +18,7 @@ describe('Navigation Tests', () => {
     cy.get('[data-cy=nav-about-item').click();
     cy.wait(500).then(() => {
       cy.get('[data-cy=about-section]').then($el => {
-        expect($el[0].getBoundingClientRect().top).to.equal(0);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });
@@ -27,7 +27,7 @@ describe('Navigation Tests', () => {
     cy.get('[data-cy=nav-work-item]').click();
     cy.wait(1000).then(() => {
       cy.get('[data-cy=work-section]').then($el => {
-        expect($el[0].getBoundingClientRect().top).to.equal(0);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });
@@ -36,7 +36,16 @@ describe('Navigation Tests', () => {
     cy.get('[data-cy=nav-contact-item]').click();
     cy.wait(1250).then(() => {
       cy.get('[data-cy=contact-section]').then($el => {
-        expect($el[0].getBoundingClientRect().top).to.equal(0);
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
+      });
+    });
+  });
+  it('scrolls to intro when user clicks home nav item', () => {
+    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
+    cy.get('[data-cy=nav-home-item]').click();
+    cy.wait(1250).then(() => {
+      cy.get('[data-cy=intro-section]').then($el => {
+        expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });

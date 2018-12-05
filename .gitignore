@@ -48,3 +48,6 @@ Thumbs.db
 
 # endpoints
 /src/app/endpoints
+
+# cypress
+cypress/videos

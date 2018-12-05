@@ -10,7 +10,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress": "cypress open",
-    "integration": "cypress run"
+    "integration": "cypress run -b chrome"
   },
   "private": true,
   "dependencies": {

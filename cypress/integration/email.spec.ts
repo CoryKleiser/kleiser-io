@@ -31,8 +31,17 @@ describe('Email Form Test', () => {
       .type(message);
   };
 
-  beforeEach(() => {
+  before(() => {
+    cy.server();
+    cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/top-tags?site=stackoverflow', 'fixture:stackoverflow.topTags.json');
+    cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/?site=stackoverflow', 'fixture:stackoverflow.userInfo.json');
+    cy.route('GET', 'https://api.github.com/users/corykleiser', 'fixture:github.userInfo.json');
+    cy.route('GET', 'https://api.github.com/users/corykleiser/repos', 'fixture:github.userRepos.json');
     cy.visit('/');
+  });
+
+  it('submit button is disabled with no input', () => {
+    cy.get('[data-cy=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for name', () => {
@@ -40,9 +49,17 @@ describe('Email Form Test', () => {
       .should('have.value', typedName);
   });
 
+  it('submit button is disabled with incomplete input', () => {
+    cy.get('[data-cy=contact-submit]').should('be.disabled');
+  });
+
   it('accepts input for email', () => {
     typeEmail(typedEmail)
       .should('have.value', typedEmail);
+  });
+
+  it('submit button is disabled with incomplete input', () => {
+    cy.get('[data-cy=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for subject', () => {
@@ -50,19 +67,20 @@ describe('Email Form Test', () => {
         .should('have.value', typedSubject);
   });
 
+  it('submit button is disabled with incomplete input', () => {
+    cy.get('[data-cy=contact-submit]').should('be.disabled');
+  });
+
   it('accepts input for body', () => {
       typeMessage(typedMessage).should('have.value', typedMessage);
   });
 
-  it('submit button is disabled with no input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
-  });
 
   it('submit button is not disabled when proper input is entered', () => {
-    typeName(typedName);
-    typeEmail(typedEmail);
-    typeSubject(typedSubject);
-    typeMessage(typedMessage);
+    // typeName(typedName);
+    // typeEmail(typedEmail);
+    // typeSubject(typedSubject);
+    // typeMessage(typedMessage);
     cy.get('[data-cy=contact-submit]').should('not.be.disabled');
   });
 

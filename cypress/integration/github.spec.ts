@@ -1,5 +1,5 @@
 describe('Github Section Tests', () => {
-  beforeEach(() => {
+  before(() => {
     cy.server();
     cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/top-tags?site=stackoverflow', 'fixture:stackoverflow.topTags.json');
     cy.route('GET', 'https://api.stackexchange.com/2.2/users/6713829/?site=stackoverflow', 'fixture:stackoverflow.userInfo.json');

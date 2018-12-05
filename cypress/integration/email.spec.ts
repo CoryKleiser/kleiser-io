@@ -54,10 +54,6 @@ describe('Email Form Test', () => {
       typeMessage(typedMessage).should('have.value', typedMessage);
   });
 
-  it('submit button is disabled with no input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
-  });
-
   it('submit button is not disabled when proper input is entered', () => {
     typeName(typedName);
     typeEmail(typedEmail);

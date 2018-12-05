@@ -9,8 +9,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "cypress": "cypress open",
-    "cypress all": "cypress run -b chrome"
+    "cypress-dev": "cypress open",
+    "cypress": "cypress run -b chrome"
   },
   "private": true,
   "dependencies": {

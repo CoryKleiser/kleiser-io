@@ -6,6 +6,10 @@ import { StackoverflowUser } from '../stackoverflow-user';
 import {StackoverflowTags} from '../stackoverflow-tags';
 import {GithubUser} from '../github-user';
 import {GithubRepo} from '../github-repo';
+import {Store} from '@ngrx/store';
+import {StackoverflowState} from '../state/stackoverflow/stackoverflow.reducer';
+import {map} from 'rxjs/operators';
+import {Observable} from 'rxjs/Observable';
 
 
 @Component({
@@ -14,14 +18,21 @@ import {GithubRepo} from '../github-repo';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  soUserInfo: StackoverflowUser;
+  soUserInfo$: Observable<StackoverflowUser;
   soTopTags: Array<StackoverflowTags>;
   githubUserInfo: GithubUser;
   githubRepos: Array<GithubRepo>;
   totalRepos: number;
 
-  constructor(private soService: StackoverflowService,
-              private githubService: GithubService) { }
+
+  constructor(
+    private soService: StackoverflowService,
+    private githubService: GithubService,
+    private store: Store<StackoverflowState>) {
+      this.soUserInfo$ = store.pipe(
+        map((state: StackoverflowState) => state.userData.items[0])
+      );
+    }
 
   ngOnInit() {
     this.showSoUserInfo();
@@ -31,8 +42,8 @@ export class AboutComponent implements OnInit {
   }
 
   showSoUserInfo(): void {
-    this.soService.getUserInfo()
-      .subscribe(soUserInfo => this.soUserInfo = soUserInfo.items[0]);
+    this.soService.getUserInfo();
+      // .subscribe(soUserInfo => this.soUserInfo$ = soUserInfo.items[0]);
   }
 
   showSoTopTags(): void {

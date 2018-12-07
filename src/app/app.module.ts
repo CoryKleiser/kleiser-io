@@ -15,6 +15,7 @@ import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './email.service';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
 import { NavComponent } from './nav/nav.component';
+import {StateModule} from './state/state.module';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { NavComponent } from './nav/nav.component';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    StateModule
   ],
   providers: [StackoverflowService, GithubService, EmailService],
   bootstrap: [AppComponent]

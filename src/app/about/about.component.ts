@@ -21,7 +21,7 @@ import {LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackove
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  soUserInfo$: Observable<StackoverflowUser>;
+  soUserInfo$: Observable<StackoverflowUser[]>;
   soTopTags$: Observable<StackoverflowTags[]>;
   githubUserInfo: GithubUser;
   githubRepos: Array<GithubRepo>;
@@ -32,10 +32,13 @@ export class AboutComponent implements OnInit {
     private soService: StackoverflowService,
     private githubService: GithubService,
     private store: Store<StackoverflowState>) {
-
+      this.soUserInfo$ = store.pipe(
+        select('stackoverflow'),
+        map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items)
+      );
       this.soTopTags$ = store.pipe(
         select('stackoverflow'),
-        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items)
+        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items.slice(0, 4))
       );
     }
 
@@ -48,10 +51,6 @@ export class AboutComponent implements OnInit {
 
   fetchSoUserInfo(): void {
     this.store.dispatch(new LoadStackoverflowUser());
-    this.soUserInfo$ = this.store.pipe(
-      select('stackoverflow'),
-      map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items[0])
-    );
   }
 
   showSoTopTags(): void {

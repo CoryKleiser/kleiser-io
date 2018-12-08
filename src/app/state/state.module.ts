@@ -1,4 +1,3 @@
-// import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {NxModule} from '@nrwl/nx';
 import {reducers} from '.';
 import {NgModule} from '@angular/core';

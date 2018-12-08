@@ -6,10 +6,10 @@ import { StackoverflowUser } from '../stackoverflow-user';
 import {StackoverflowTags} from '../stackoverflow-tags';
 import {GithubUser} from '../github-user';
 import {GithubRepo} from '../github-repo';
-import {Store} from '@ngrx/store';
+import {select, Store} from '@ngrx/store';
 import {StackoverflowState} from '../state/stackoverflow/stackoverflow.reducer';
-import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 
 
 @Component({
@@ -18,8 +18,8 @@ import {Observable} from 'rxjs/Observable';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
-  soUserInfo$: Observable<StackoverflowUser;
-  soTopTags: Array<StackoverflowTags>;
+  soUserInfo$: Observable<StackoverflowUser>;
+  soTopTags$: Observable<StackoverflowTags[]>;
   githubUserInfo: GithubUser;
   githubRepos: Array<GithubRepo>;
   totalRepos: number;
@@ -30,7 +30,12 @@ export class AboutComponent implements OnInit {
     private githubService: GithubService,
     private store: Store<StackoverflowState>) {
       this.soUserInfo$ = store.pipe(
-        map((state: StackoverflowState) => state.userData.items[0])
+        select('stackoverflow'),
+        map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items[0])
+      );
+      this.soTopTags$ = store.pipe(
+        select('stackoverflow'),
+        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items)
       );
     }
 
@@ -47,8 +52,8 @@ export class AboutComponent implements OnInit {
   }
 
   showSoTopTags(): void {
-    this.soService.getTopTags()
-      .subscribe(soTopTags => this.soTopTags = soTopTags.items.slice(0, 4));
+    // this.soService.getTopTags()
+    //   .subscribe(soTopTags => this.soTopTags = soTopTags.items.slice(0, 4));
   }
 
   showGithubProfile(): void {

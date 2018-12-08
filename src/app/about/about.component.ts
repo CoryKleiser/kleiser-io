@@ -10,7 +10,7 @@ import {select, Store} from '@ngrx/store';
 import {StackoverflowState} from '../state/stackoverflow/stackoverflow.reducer';
 import {Observable} from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
-import {LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackoverflow/stackoverflow.actions';
+import {LoadStackoverflowTopTags, LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackoverflow/stackoverflow.actions';
 
 
 
@@ -38,13 +38,13 @@ export class AboutComponent implements OnInit {
       );
       this.soTopTags$ = store.pipe(
         select('stackoverflow'),
-        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items.slice(0, 4))
+        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items)
       );
     }
 
   ngOnInit() {
     this.fetchSoUserInfo();
-    // this.showSoTopTags();
+    this.showSoTopTags();
     this.showGithubProfile();
     this.showGithubRepos();
   }
@@ -54,8 +54,7 @@ export class AboutComponent implements OnInit {
   }
 
   showSoTopTags(): void {
-    // this.soService.getTopTags()
-    //   .subscribe(soTopTags => this.soTopTags = soTopTags.items.slice(0, 4));
+    this.store.dispatch(new LoadStackoverflowTopTags());
   }
 
   showGithubProfile(): void {

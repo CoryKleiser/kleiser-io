@@ -11,6 +11,8 @@ import {StackoverflowState} from '../state/stackoverflow/stackoverflow.reducer';
 import {Observable} from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
 import {LoadStackoverflowTopTags, LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackoverflow/stackoverflow.actions';
+import {StackoverflowFacade} from '../state/stackoverflow/stackoverflow.facade';
+import {StackoverflowInfo} from '../stackoverflow-info';
 
 
 
@@ -31,14 +33,12 @@ export class AboutComponent implements OnInit {
   constructor(
     private soService: StackoverflowService,
     private githubService: GithubService,
-    private store: Store<StackoverflowState>) {
-      this.soUserInfo$ = store.pipe(
-        select('stackoverflow'),
-        map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items)
+    private soFacade: StackoverflowFacade) {
+      this.soUserInfo$ = soFacade.userData$.pipe(
+        map((userData: StackoverflowInfo) => userData.items)
       );
-      this.soTopTags$ = store.pipe(
-        select('stackoverflow'),
-        map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items)
+      this.soTopTags$ = soFacade.topTags$.pipe(
+        map((topTags: StackoverflowInfo) => topTags.items)
       );
     }
 
@@ -50,11 +50,11 @@ export class AboutComponent implements OnInit {
   }
 
   fetchSoUserInfo(): void {
-    this.store.dispatch(new LoadStackoverflowUser());
+    this.soFacade.getStackoverflowUserInfo();
   }
 
   showSoTopTags(): void {
-    this.store.dispatch(new LoadStackoverflowTopTags());
+    this.soFacade.getStackoverflowTopTags();
   }
 
   showGithubProfile(): void {

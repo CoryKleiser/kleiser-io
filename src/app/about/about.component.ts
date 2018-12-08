@@ -10,6 +10,9 @@ import {select, Store} from '@ngrx/store';
 import {StackoverflowState} from '../state/stackoverflow/stackoverflow.reducer';
 import {Observable} from 'rxjs/Observable';
 import { map } from 'rxjs/operators';
+import {LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackoverflow/stackoverflow.actions';
+
+
 
 
 @Component({
@@ -29,10 +32,7 @@ export class AboutComponent implements OnInit {
     private soService: StackoverflowService,
     private githubService: GithubService,
     private store: Store<StackoverflowState>) {
-      this.soUserInfo$ = store.pipe(
-        select('stackoverflow'),
-        map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items[0])
-      );
+
       this.soTopTags$ = store.pipe(
         select('stackoverflow'),
         map((stackoverflowState: StackoverflowState) => stackoverflowState.topTags.items)
@@ -40,15 +40,18 @@ export class AboutComponent implements OnInit {
     }
 
   ngOnInit() {
-    this.showSoUserInfo();
-    this.showSoTopTags();
+    this.fetchSoUserInfo();
+    // this.showSoTopTags();
     this.showGithubProfile();
     this.showGithubRepos();
   }
 
-  showSoUserInfo(): void {
-    this.soService.getUserInfo();
-      // .subscribe(soUserInfo => this.soUserInfo$ = soUserInfo.items[0]);
+  fetchSoUserInfo(): void {
+    this.store.dispatch(new LoadStackoverflowUser());
+    this.soUserInfo$ = this.store.pipe(
+      select('stackoverflow'),
+      map((stackoverflowState: StackoverflowState) => stackoverflowState.userData.items[0])
+    );
   }
 
   showSoTopTags(): void {

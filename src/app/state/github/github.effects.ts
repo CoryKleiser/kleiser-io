@@ -11,7 +11,7 @@ export class GithubEffects {
   @Effect() loadGithubUser$ = this.actions$.pipe(
     ofType(GithubActionTypes.LoadGithubUser),
     switchMap((action: LoadGithubUser) =>
-      this.githubService.getUserProfile('corykleiser')
+      this.githubService.getUserProfile(action.payload)
         .pipe(
           map((res: GithubUser) => new GithubUserLoaded(res))
         )
@@ -20,7 +20,7 @@ export class GithubEffects {
   @Effect() loadGithubUserRepos$ = this.actions$.pipe(
     ofType(GithubActionTypes.LoadGithubUserRepos),
     switchMap((action: LoadGithubUserRepos) =>
-      this.githubService.getUserRepos('corykleiser')
+      this.githubService.getUserRepos(action.payload)
         .pipe(
           map((res: GithubRepo[]) => new GithubUserReposLoaded(res))
         )

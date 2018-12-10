@@ -64,11 +64,11 @@ export class AboutComponent implements OnInit {
   }
 
   fetchGithubProfile(): void {
-    this.ghFacade.getGithubUserInfo();
+    this.ghFacade.getGithubUserInfo('corykleiser');
   }
 
   fetchGithubRepos(): void {
-    this.ghFacade.getGithubUserRepos();
+    this.ghFacade.getGithubUserRepos('corykleiser');
   }
 
 }

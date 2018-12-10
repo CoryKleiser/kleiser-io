@@ -23,11 +23,11 @@ export class GithubFacade {
     );
   }
 
-  getGithubUserInfo() {
-    this.store.dispatch(new LoadGithubUser());
+  getGithubUserInfo(username: string) {
+    this.store.dispatch(new LoadGithubUser(username));
   }
 
-  getGithubUserRepos() {
-    this.store.dispatch(new LoadGithubUserRepos());
+  getGithubUserRepos(username: string) {
+    this.store.dispatch(new LoadGithubUserRepos(username));
   }
 }

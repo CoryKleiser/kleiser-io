@@ -16,20 +16,22 @@ export enum GithubActionTypes {
 // 02 Create actions
 export class LoadGithubUser implements Action {
   readonly type = GithubActionTypes.LoadGithubUser;
+  constructor(public payload: string) {}
 }
 
 export class GithubUserLoaded implements Action {
   readonly type = GithubActionTypes.GithubUserLoaded;
-  constructor(private payload: GithubUser) {}
+  constructor(public payload: GithubUser) {}
 }
 
 export class LoadGithubUserRepos implements Action {
   readonly type = GithubActionTypes.LoadGithubUserRepos;
+  constructor(public payload: string) {}
 }
 
 export class GithubUserReposLoaded {
   readonly type = GithubActionTypes.GithubUserReposLoaded;
-  constructor(private payload: GithubRepo[]) {}
+  constructor(public payload: GithubRepo[]) {}
 }
 
 // 03 Expose Actions as union type

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-import { StackoverflowService } from '../stackoverflow.service';
-import { GithubService } from '../github.service';
-import { StackoverflowUser } from '../stackoverflow-user';
-import {StackoverflowTags} from '../stackoverflow-tags';
-import {GithubUser} from '../github-user';
-import {GithubRepo} from '../github-repo';
+import { StackoverflowService } from '../services/stackoverflow.service';
+import { GithubService } from '../services/github.service';
+import { StackoverflowUser } from '../types/stackoverflow-user';
+import {StackoverflowTags} from '../types/stackoverflow-tags';
+import {GithubUser} from '../types/github-user';
+import {GithubRepo} from '../types/github-repo';
 
 
 @Component({

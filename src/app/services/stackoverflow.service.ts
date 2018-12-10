@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 import {Observable} from 'rxjs/Observable';
 
-import {StackoverflowInfo} from './stackoverflow-info';
+import {StackoverflowInfo} from '../types/stackoverflow-info';
 
 @Injectable()
 export class StackoverflowService {

@@ -4,8 +4,8 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 
-import {GithubUser} from './github-user';
-import {GithubRepo} from './github-repo';
+import {GithubUser} from '../types/github-user';
+import {GithubRepo} from '../types/github-repo';
 
 @Injectable()
 export class GithubService {

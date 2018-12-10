@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 
-import { sendEmailUrl } from './endpoints/enpoints';
-import {Email} from './email';
+import { sendEmailUrl } from '../endpoints/enpoints';
+import {Email} from '../types/email';
 
 const httpOptions = {
   headers: new HttpHeaders({

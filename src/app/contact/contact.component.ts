@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 
-import { Email } from '../email';
+import { Email } from '../types/email';
 
-import { EmailService } from '../email.service';
+import { EmailService } from '../services/email.service';
 import { FormControl } from '@angular/forms';
 
 @Component({

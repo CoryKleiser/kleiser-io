@@ -6,6 +6,7 @@ import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {StackoverflowEffects} from './stackoverflow/stackoverflow.effects';
+import {GithubEffects} from './github/github.effects';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {StackoverflowEffects} from './stackoverflow/stackoverflow.effects';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     EffectsModule.forRoot([
-      StackoverflowEffects
+      StackoverflowEffects,
+      GithubEffects
     ]),
   ],
   declarations: []

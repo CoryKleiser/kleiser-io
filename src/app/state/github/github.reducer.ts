@@ -1,5 +1,6 @@
 import {GithubUser} from '../../github-user';
 import {GithubRepo} from '../../github-repo';
+import {GithubActionTypes} from './github.actions';
 
 
 export interface GithubState {
@@ -15,6 +16,10 @@ export const initialState: GithubState = {
 export function githubReducer(
   state = initialState, action): GithubState {
     switch (action.type) {
+      case GithubActionTypes.GithubUserLoaded :
+        return Object.assign({}, state, {userInfo: action.payload});
+      case GithubActionTypes.GithubUserReposLoaded :
+        return Object.assign({}, state, {userRepos: action.payload});
       default :
         return state;
     }

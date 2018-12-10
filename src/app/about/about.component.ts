@@ -13,6 +13,8 @@ import { map } from 'rxjs/operators';
 import {LoadStackoverflowTopTags, LoadStackoverflowUser, StackoverflowActionTypes} from '../state/stackoverflow/stackoverflow.actions';
 import {StackoverflowFacade} from '../state/stackoverflow/stackoverflow.facade';
 import {StackoverflowInfo} from '../stackoverflow-info';
+import {GithubState} from '../state/github/github.reducer';
+import {LoadGithubUser, LoadGithubUserRepos} from '../state/github/github.actions';
 
 
 
@@ -25,20 +27,24 @@ import {StackoverflowInfo} from '../stackoverflow-info';
 export class AboutComponent implements OnInit {
   soUserInfo$: Observable<StackoverflowUser[]>;
   soTopTags$: Observable<StackoverflowTags[]>;
-  githubUserInfo: GithubUser;
-  githubRepos: Array<GithubRepo>;
+  githubUserInfo$: Observable<GithubUser>;
+  githubRepos$: Observable<GithubRepo[]>;
   totalRepos: number;
 
 
   constructor(
     private soService: StackoverflowService,
     private githubService: GithubService,
+    private ghStore: Store<GithubState>,
     private soFacade: StackoverflowFacade) {
       this.soUserInfo$ = soFacade.userData$.pipe(
         map((userData: StackoverflowInfo) => userData.items)
       );
       this.soTopTags$ = soFacade.topTags$.pipe(
         map((topTags: StackoverflowInfo) => topTags.items)
+      );
+      this.githubUserInfo$ = ghStore.pipe(
+        select('github')
       );
     }
 
@@ -58,16 +64,16 @@ export class AboutComponent implements OnInit {
   }
 
   showGithubProfile(): void {
-    this.githubService.getUserProfile('corykleiser')
-      .subscribe(githubUserInfo => this.githubUserInfo = githubUserInfo);
+    this.ghStore.dispatch(new LoadGithubUser());
   }
 
   showGithubRepos(): void {
-    this.githubService.getUserRepos('corykleiser')
-      .subscribe(githubRepos => {
-        this.totalRepos = githubRepos.length;
-        this.githubRepos = githubRepos.filter(repo => repo.watchers > 0);
-      });
+    this.ghStore.dispatch(new LoadGithubUserRepos());
+    // this.githubService.getUserRepos('corykleiser')
+    //   .subscribe(githubRepos => {
+    //     this.totalRepos = githubRepos.length;
+    //     this.githubRepos = githubRepos.filter(repo => repo.watchers > 0);
+    //   });
   }
 
 }

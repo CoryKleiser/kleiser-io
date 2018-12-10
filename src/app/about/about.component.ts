@@ -7,7 +7,7 @@ import {StackoverflowTags} from '../stackoverflow-tags';
 import {GithubUser} from '../github-user';
 import {GithubRepo} from '../github-repo';
 import {Observable} from 'rxjs/Observable';
-import { map } from 'rxjs/operators';
+import {filter, map} from 'rxjs/operators';
 import {StackoverflowFacade} from '../state/stackoverflow/stackoverflow.facade';
 import {StackoverflowInfo} from '../stackoverflow-info';
 import {GithubFacade} from '../state/github/github.facade';
@@ -40,7 +40,9 @@ export class AboutComponent implements OnInit {
         map((topTags: StackoverflowInfo) => topTags.items)
       );
       this.githubUserInfo$ = ghFacade.userInfo$;
-      this.githubRepos$ = ghFacade.userRepos$;
+      this.githubRepos$ = ghFacade.userRepos$.pipe(
+        map((repos: GithubRepo[]) => repos.filter((repo: GithubRepo) => repo.watchers > 0))
+      );
       this.githubRepos$.subscribe(repos => {
         this.totalRepos = repos.length;
       });
@@ -48,24 +50,24 @@ export class AboutComponent implements OnInit {
 
   ngOnInit() {
     this.fetchSoUserInfo();
-    this.showSoTopTags();
-    this.showGithubProfile();
-    this.showGithubRepos();
+    this.fetchSoTopTags();
+    this.fetchGithubProfile();
+    this.fetchGithubRepos();
   }
 
   fetchSoUserInfo(): void {
     this.soFacade.getStackoverflowUserInfo();
   }
 
-  showSoTopTags(): void {
+  fetchSoTopTags(): void {
     this.soFacade.getStackoverflowTopTags();
   }
 
-  showGithubProfile(): void {
+  fetchGithubProfile(): void {
     this.ghFacade.getGithubUserInfo();
   }
 
-  showGithubRepos(): void {
+  fetchGithubRepos(): void {
     this.ghFacade.getGithubUserRepos();
   }
 

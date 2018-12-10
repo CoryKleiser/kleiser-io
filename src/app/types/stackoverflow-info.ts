@@ -1,6 +1,6 @@
 export class StackoverflowInfo {
   items: Array<any>;
-  has_more: false;
-  quota_max: 300;
-  quota_remaining: 149;
+  has_more: boolean;
+  quota_max: number;
+  quota_remaining: number;
 }

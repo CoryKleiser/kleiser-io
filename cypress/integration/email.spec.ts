@@ -6,27 +6,27 @@ describe('Email Form Test', () => {
 
   // @ts-ignore
   const typeName = (name) => {
-    return cy.get('[data-cy=contact-name]')
+    return cy.get('[data-test=contact-name]')
       .focus()
       .type(name);
   };
   // @ts-ignore
   const typeEmail = (email) => {
-    return cy.get('[data-cy=contact-email]')
+    return cy.get('[data-test=contact-email]')
       .focus()
       .type(email);
   };
 
   // @ts-ignore
   const typeSubject = (subject) => {
-    return cy.get('[data-cy=message-subject]')
+    return cy.get('[data-test=message-subject]')
       .focus()
       .type(subject);
   };
 
   // @ts-ignore
   const typeMessage = (message) => {
-    return cy.get('[data-cy=message-body]')
+    return cy.get('[data-test=message-body]')
       .focus()
       .type(message);
   };
@@ -41,7 +41,7 @@ describe('Email Form Test', () => {
   });
 
   it('submit button is disabled with no input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
+    cy.get('[data-test=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for name', () => {
@@ -50,7 +50,7 @@ describe('Email Form Test', () => {
   });
 
   it('submit button is disabled with incomplete input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
+    cy.get('[data-test=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for email', () => {
@@ -59,7 +59,7 @@ describe('Email Form Test', () => {
   });
 
   it('submit button is disabled with incomplete input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
+    cy.get('[data-test=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for subject', () => {
@@ -68,7 +68,7 @@ describe('Email Form Test', () => {
   });
 
   it('submit button is disabled with incomplete input', () => {
-    cy.get('[data-cy=contact-submit]').should('be.disabled');
+    cy.get('[data-test=contact-submit]').should('be.disabled');
   });
 
   it('accepts input for body', () => {
@@ -80,7 +80,7 @@ describe('Email Form Test', () => {
     // typeEmail(typedEmail);
     // typeSubject(typedSubject);
     // typeMessage(typedMessage);
-    cy.get('[data-cy=contact-submit]').should('not.be.disabled');
+    cy.get('[data-test=contact-submit]').should('not.be.disabled');
   });
 
 });

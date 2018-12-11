@@ -1,7 +1,7 @@
-<span class="oi oi-menu" (mouseover)="showNavOnHover()" (click)="showNavOnTouch()" data-cy="nav-toggle"></span>
-<ul class="list-group" *ngIf="showNav===true" (mouseleave)="showNav = false" data-cy="nav-list">
-  <li (click)="moveToHome()" class="list-group-item list-group-item-active" data-cy="nav-home-item">Home</li>
-  <li (click)="moveToAbout()" class="list-group-item list-group-item-active" data-cy="nav-about-item">About</li>
-  <li (click)="moveToWork()" class="list-group-item list-group-item-active" data-cy="nav-work-item">Work</li>
-  <li (click)="moveToContact()" class="list-group-item list-group-item-active" data-cy="nav-contact-item">Contact</li>
+<span class="oi oi-menu" (mouseover)="showNavOnHover()" (click)="showNavOnTouch()" data-test="nav-toggle"></span>
+<ul class="list-group" *ngIf="showNav===true" (mouseleave)="showNav = false" data-test="nav-list">
+  <li (click)="moveToHome()" class="list-group-item list-group-item-active" data-test="nav-home-item">Home</li>
+  <li (click)="moveToAbout()" class="list-group-item list-group-item-active" data-test="nav-about-item">About</li>
+  <li (click)="moveToWork()" class="list-group-item list-group-item-active" data-test="nav-work-item">Work</li>
+  <li (click)="moveToContact()" class="list-group-item list-group-item-active" data-test="nav-contact-item">Contact</li>
 </ul>

@@ -8,43 +8,43 @@ describe('Navigation Tests', () => {
     cy.visit('/');
   });
   it('shows nav on mouseover and hides on mouseleave', () => {
-    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
-    cy.get('[data-cy=nav-list]').should('exist');
-    cy.get('[data-cy=nav-list]').trigger('mouseleave');
-    cy.get('[data-cy=nav-list]').should('not.exist');
+    cy.get('[data-test=nav-toggle]').trigger('mouseover');
+    cy.get('[data-test=nav-list]').should('exist');
+    cy.get('[data-test=nav-list]').trigger('mouseleave');
+    cy.get('[data-test=nav-list]').should('not.exist');
   });
   it('scrolls to about sections when user clicks About nav item', () => {
-    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
-    cy.get('[data-cy=nav-about-item').click();
+    cy.get('[data-test=nav-toggle]').trigger('mouseover');
+    cy.get('[data-test=nav-about-item').click();
     cy.wait(500).then(() => {
-      cy.get('[data-cy=about-section]').then($el => {
+      cy.get('[data-test=about-section]').then($el => {
         expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });
   it('scrolls to work when user clicks Work nav item', () => {
-    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
-    cy.get('[data-cy=nav-work-item]').click();
+    cy.get('[data-test=nav-toggle]').trigger('mouseover');
+    cy.get('[data-test=nav-work-item]').click();
     cy.wait(1000).then(() => {
-      cy.get('[data-cy=work-section]').then($el => {
+      cy.get('[data-test=work-section]').then($el => {
         expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });
   it('scrolls to contact when user clicks contact nav item', () => {
-    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
-    cy.get('[data-cy=nav-contact-item]').click();
+    cy.get('[data-test=nav-toggle]').trigger('mouseover');
+    cy.get('[data-test=nav-contact-item]').click();
     cy.wait(1250).then(() => {
-      cy.get('[data-cy=contact-section]').then($el => {
+      cy.get('[data-test=contact-section]').then($el => {
         expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });
   });
   it('scrolls to intro when user clicks home nav item', () => {
-    cy.get('[data-cy=nav-toggle]').trigger('mouseover');
-    cy.get('[data-cy=nav-home-item]').click();
+    cy.get('[data-test=nav-toggle]').trigger('mouseover');
+    cy.get('[data-test=nav-home-item]').click();
     cy.wait(1250).then(() => {
-      cy.get('[data-cy=intro-section]').then($el => {
+      cy.get('[data-test=intro-section]').then($el => {
         expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });
     });

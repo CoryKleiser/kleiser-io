@@ -1,4 +1,4 @@
-<section id="contact" data-cy="contact-section">
+<section id="contact" data-test="contact-section">
   <div class="container-fluid m-4">
     <h1 class="text-center">Contact Me</h1>
     <fieldset>
@@ -20,7 +20,7 @@
         </div>
         <label for="name" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Name</label>
         <div class="col-sm-8 order-2">
-          <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="name" data-cy="contact-name">
+          <input [(ngModel)]="emailContent.name" #name="ngModel" id="name" class="form-control" required  minlength="4" appForbiddenInput="name" data-test="contact-name">
         </div>
       </div>
       <div class="form-group row">
@@ -38,7 +38,7 @@
         </div>
         <label for="email" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Email</label>
         <div class="col-sm-8 order-2">
-          <input [(ngModel)]="emailContent.email" #email="ngModel" id="email" class="form-control" required appForbiddenInput="^(?![A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})" data-cy="contact-email">
+          <input [(ngModel)]="emailContent.email" #email="ngModel" id="email" class="form-control" required appForbiddenInput="^(?![A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4})" data-test="contact-email">
         </div>
       </div>
     </fieldset>
@@ -55,7 +55,7 @@
         </div>
         <label for="subject" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Subject</label>
         <div class="col-sm-8 order-2">
-          <input [(ngModel)]="emailContent.subject" #subject="ngModel" id="subject" class="form-control" required data-cy="message-subject">
+          <input [(ngModel)]="emailContent.subject" #subject="ngModel" id="subject" class="form-control" required data-test="message-subject">
         </div>
       </div>
       <div class="form-group row">
@@ -73,14 +73,14 @@
         </div>
         <label for="message" class="col-sm-2 order-0 order-sm-1 control-label text-center text-sm-right">Message</label>
         <div class="col-sm-8 order-2">
-          <textarea [(ngModel)]="emailContent.message" #message="ngModel" id="message" class="form-control" required minlength="25" data-cy="message-body"></textarea>
+          <textarea [(ngModel)]="emailContent.message" #message="ngModel" id="message" class="form-control" required minlength="25" data-test="message-body"></textarea>
         </div>
       </div>
     </fieldset>
     <button [disabled]="name.errors || email.errors || subject.errors || message.errors" type="submit"
             (click)="send(); name.reset(); email.reset(); subject.reset(); message.reset();"
             class="btn btn-success col-sm-4"
-            data-cy="contact-submit">Send</button>
+            data-test="contact-submit">Send</button>
     <div *ngIf="this.error" class="alert alert-danger notification" role="alert">
       Whoops! Something went terribly wrong :(<br>Please try again later.
     </div>

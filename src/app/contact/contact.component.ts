@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 import { Email } from '../types/email';
 
@@ -11,10 +11,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  name = new FormControl();
-  email = new FormControl();
-  subject = new FormControl();
-  message = new FormControl();
+  @Input() name = new FormControl();
+  @Input() email = new FormControl();
+  @Input() subject = new FormControl();
+  @Input() message = new FormControl();
   error: any = '';
 
   emailContent: Email;

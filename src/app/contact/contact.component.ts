@@ -11,10 +11,10 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./contact.component.css']
 })
 export class ContactComponent implements OnInit {
-  @Input() name = new FormControl();
-  @Input() email = new FormControl();
-  @Input() subject = new FormControl();
-  @Input() message = new FormControl();
+  @Input() name: string;
+  @Input() email: string;
+  @Input() subject: string;
+  @Input() message: string;
   error: any = '';
 
   emailContent: Email;

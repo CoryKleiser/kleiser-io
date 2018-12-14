@@ -6,14 +6,11 @@ import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
 
 fdescribe('ContactComponent', () => {
+  let page;
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
   let emailServiceStub: Partial<EmailService>;
-  let nameEl: HTMLInputElement;
-  let emailEl: HTMLInputElement;
-  let subjectEl: HTMLInputElement;
-  let messageEl: HTMLInputElement;
-  let submitEl: HTMLInputElement;
+
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -25,22 +22,12 @@ fdescribe('ContactComponent', () => {
 
   beforeEach(() => {
     // create component and test fixtures
-    fixture = TestBed.createComponent(ContactComponent);
-
-    fixture.detectChanges();
-
-    // get test component from fixture
-    component = fixture.componentInstance;
-
+    createComponent();
 
     // create service stub
     emailServiceStub = {};
     // define elements
-    nameEl = fixture.nativeElement.querySelector('[data-test="contact-name"]');
-    emailEl = fixture.nativeElement.querySelector('[data-test=contact-email]');
-    subjectEl = fixture.nativeElement.querySelector('[data-test=message-subject]');
-    messageEl = fixture.nativeElement.querySelector('[data-test=message-body]');
-    submitEl = fixture.nativeElement.querySelector('[data-test=contact-submit]');
+
 
   });
 
@@ -49,14 +36,86 @@ fdescribe('ContactComponent', () => {
   });
 
   it('should update component.emailContent.name on update to name', () => { // fails
-    // define simulated name text
-    nameEl.value = 'Test Name';
-    // dispatch DOM event to tell Angular about the updated text
-    nameEl.dispatchEvent(new Event('input'));
-    // Tell Angular to update the binding
-    fixture.detectChanges();
-
-    expect(component.emailContent.name).toBe('Test Name');
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name)
+    expect(component.emailContent.name).toBe(page.testEmailContent.name);
   });
 
+  it('should update component.emailContent.email on update to email', () => { // fails
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email)
+    expect(component.emailContent.email).toBe(page.testEmailContent.email);
+  });
+
+  it('should update component.emailContent.subject on update to subject', () => { // fails
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    expect(component.emailContent.subject).toBe(page.testEmailContent.subject);
+  });
+
+  it('should update component.emailContent.message on update to message', () => { // fails
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(component.emailContent.message).toBe(page.testEmailContent.message);
+  });
+
+
+  // Helper Functions
+
+  /**
+   * This function creates our component and sets up our page
+   */
+  function createComponent() {
+    fixture = TestBed.createComponent(ContactComponent);
+    component = fixture.componentInstance;
+    page = new Page();
+
+    // 1st change detection triggers ngOnInit
+    fixture.detectChanges();
+    return fixture.whenStable().then(() => {
+      // 2nd change detection displays the async
+      fixture.detectChanges();
+    });
+  }
+
+
+  function setTextInputAndDetectChanges(inputElement: HTMLInputElement, input: string): void {
+    // define simulated input
+    inputElement.value = input;
+    // dispatch DOM event to tell Angular about the updated text
+    inputElement.dispatchEvent(new Event('input'));
+    // dispatch DOM event to tell Angular about the updated text
+    fixture.detectChanges();
+  }
+
+  // Create Page Class
+  class Page {
+    // getter properties wait to query the DOM until called.
+    get nameInput()   { return this.query<HTMLInputElement>('[data-test="contact-name"]'); }
+    get emailInput() { return this.query<HTMLInputElement>('[data-test="contact-email"]'); }
+    get subjectInput() { return this.query<HTMLInputElement>('[data-test="message-subject"]'); }
+    get messageInput() { return this.query<HTMLInputElement>('[data-test="message-body"]'); }
+    get submitButton() { return this.query<HTMLButtonElement>('[data-test="contact-submit"'); }
+
+    sendSpy: jasmine.Spy;
+    testEmailContent = {
+        name: 'Test Name',
+        email: 'test@test.test',
+        subject: 'Test Subject',
+        message: 'This message must be at least 25 characters long.'
+    };
+    constructor() {
+      // spy on component's `gotoList()` method
+      this.sendSpy = spyOn(component, 'send').and.callThrough();
+    }
+
+    //// query helpers ////
+    private query<T>(selector: string): T {
+      return fixture.nativeElement.querySelector(selector);
+    }
+
+    private queryAll<T>(selector: string): T[] {
+      return fixture.nativeElement.querySelectorAll(selector);
+    }
+  }
+
 });
+
+
+

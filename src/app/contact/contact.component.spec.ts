@@ -32,9 +32,10 @@ fdescribe('ContactComponent', () => {
     // get test component from fixture
     component = fixture.componentInstance;
 
+
     // create service stub
     emailServiceStub = {};
-
+    // define elements
     nameEl = fixture.nativeElement.querySelector('[data-test="contact-name"]');
     emailEl = fixture.nativeElement.querySelector('[data-test=contact-email]');
     subjectEl = fixture.nativeElement.querySelector('[data-test=message-subject]');
@@ -43,21 +44,15 @@ fdescribe('ContactComponent', () => {
 
   });
 
-  it('should create', () => {
+  it('should create', () => { // passes
     expect(component).toBeTruthy();
   });
 
-  it('should update component.emailContent.name on update to name', () => {
+  it('should update component.emailContent.name on update to name', () => { // fails
     // define simulated name text
-    console.log(component.name);
-    component.name.setValue('Test Name');
-    fixture.detectChanges();
-    console.log(nameEl.value);
+    nameEl.value = 'Test Name';
     // dispatch DOM event to tell Angular about the updated text
-    const e: Event = document.createEvent('Event');
-    e.initEvent('change', false, false);
-    nameEl.dispatchEvent(e);
-    console.log(component);
+    nameEl.dispatchEvent(new Event('input'));
     // Tell Angular to update the binding
     fixture.detectChanges();
 

@@ -4,9 +4,10 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ContactComponent } from './contact.component';
 import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
+import {ForbiddenValidatorDirective} from '../shared/forbidden-validator-directive.directive';
 
 fdescribe('ContactComponent', () => {
-  let page;
+  let page: Page;
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;
   let emailServiceStub: Partial<EmailService>;
@@ -15,7 +16,7 @@ fdescribe('ContactComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, HttpClientTestingModule ],
-      declarations: [ ContactComponent ],
+      declarations: [ ContactComponent, ForbiddenValidatorDirective ],
       providers: [ {provide: EmailService, useValue: emailServiceStub} ]
     });
   }));
@@ -31,30 +32,97 @@ fdescribe('ContactComponent', () => {
 
   });
 
-  it('should create', () => { // passes
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should update component.emailContent.name on update to name', () => { // fails
-    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name)
+  it('should update component.emailContent.name on update to name', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
     expect(component.emailContent.name).toBe(page.testEmailContent.name);
   });
 
-  it('should update component.emailContent.email on update to email', () => { // fails
-    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email)
+  it('should update component.emailContent.email on update to email', () => {
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
     expect(component.emailContent.email).toBe(page.testEmailContent.email);
   });
 
-  it('should update component.emailContent.subject on update to subject', () => { // fails
+  it('should update component.emailContent.subject on update to subject', () => {
     setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
     expect(component.emailContent.subject).toBe(page.testEmailContent.subject);
   });
 
-  it('should update component.emailContent.message on update to message', () => { // fails
+  it('should update component.emailContent.message on update to message', () => {
     setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
     expect(component.emailContent.message).toBe(page.testEmailContent.message);
   });
 
+  it('should enable submit button when all input meets validation requirements', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(false);
+  });
+
+  it('should disable submit button when there is no name', () => {
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when the name is invalid (too short)', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContentInvalid.name);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when the name is name', () => {
+    setTextInputAndDetectChanges(page.nameInput, 'name');
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when there is no email', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when email is invalid', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContentInvalid.email);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when there is no subject', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when there is no message', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    expect(page.submitButton.disabled).toBe(true);
+  });
+
+  it('should disable submit button when the message is too short', () => {
+    setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
+    setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
+    setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
+    setTextInputAndDetectChanges(page.messageInput, page.testEmailContentInvalid.message);
+    expect(page.submitButton.disabled).toBe(true);
+  });
 
   // Helper Functions
 
@@ -95,10 +163,16 @@ fdescribe('ContactComponent', () => {
 
     sendSpy: jasmine.Spy;
     testEmailContent = {
-        name: 'Test Name',
+        name: 'Testing 123',
         email: 'test@test.test',
         subject: 'Test Subject',
         message: 'This message must be at least 25 characters long.'
+    };
+    testEmailContentInvalid = {
+      name: 'bob',
+      email: 'failing@email',
+      subject: '',
+      message: 'This message is to short'
     };
     constructor() {
       // spy on component's `gotoList()` method

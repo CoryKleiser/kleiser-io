@@ -7,13 +7,13 @@
         <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="name.invalid && (name.dirty || name.touched)"
                class="col-sm-8 offset-sm-2 alert alert-danger">
-            <div *ngIf="name?.errors.required">
+            <div *ngIf="name.errors.required">
               Name is required.
             </div>
-            <div *ngIf="name?.errors.minlength">
+            <div *ngIf="name.errors.minlength">
               Name must be at least 4 characters long.
             </div>
-            <div *ngIf="name?.errors.forbiddenInput">
+            <div *ngIf="name.errors.forbiddenInput">
               Name cannot be name.
             </div>
           </div>
@@ -28,10 +28,10 @@
           <div *ngIf="email.invalid && (email.dirty || email.touched)"
                class="col-sm-8 offset-sm-2 alert alert-danger">
 
-            <div *ngIf="email?.errors.required">
+            <div *ngIf="email.errors.required">
               Email is required.
             </div>
-            <div *ngIf="email?.errors.forbiddenInput">
+            <div *ngIf="email.errors.forbiddenInput">
               Please enter a valid email.
             </div>
           </div>
@@ -48,7 +48,7 @@
         <div class="col-sm-12 order-1 order-sm-0">
           <div *ngIf="subject.invalid && (subject.dirty || subject.touched)"
                class="col-sm-8 offset-sm-2 alert alert-danger">
-            <div *ngIf="subject?.errors.required">
+            <div *ngIf="subject.errors.required">
               Subject is required.
             </div>
           </div>
@@ -63,10 +63,10 @@
           <div *ngIf="message.invalid && (message.dirty || message.touched)"
                class="col-sm-8 offset-sm-2 alert alert-danger">
 
-            <div *ngIf="message?.errors.required">
+            <div *ngIf="message.errors.required">
               Message is required.
             </div>
-            <div *ngIf="message?.errors.minlength">
+            <div *ngIf="message.errors.minlength">
               Please be a little bit more detailed.
             </div>
           </div>

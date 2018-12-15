@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
 import {ForbiddenValidatorDirective} from '../shared/forbidden-validator-directive.directive';
 
-fdescribe('ContactComponent', () => {
+describe('ContactComponent', () => {
   let page: Page;
   let component: ContactComponent;
   let fixture: ComponentFixture<ContactComponent>;

@@ -110,7 +110,7 @@ describe('StackoverflowService', () => {
 
       service.getTopTags().subscribe((data: StackoverflowInfo) => {
         expect(data.items.length).toBe(5);
-        expect(data.items[0].tag_name.toBe('javascript'));
+        expect(data.items[0].tag_name).toBe('javascript');
       });
 
       const req = httpMock.expectOne('https://api.stackexchange.com/2.2/users/6713829/top-tags?site=stackoverflow');

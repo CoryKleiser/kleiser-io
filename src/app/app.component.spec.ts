@@ -35,7 +35,6 @@ describe('AppComponent', () => {
   });
 
   it('should create the app', async(() => {
-    console.log(app);
     expect(app).toBeTruthy();
   }));
   it(`should have as title 'Welcome to Kleiser IO'`, async(() => {

@@ -32,7 +32,6 @@ export class ContactComponent implements OnInit {
   send() {
     this.emailService.sendEmail(this.emailContent)
       .subscribe( res => {
-        console.log(res);
         if (res.statusCode !== 201) {
           this.error = res;
         } else {

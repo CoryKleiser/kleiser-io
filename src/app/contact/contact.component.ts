@@ -3,7 +3,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Email } from '../types/email';
 
 import { EmailService } from '../services/email.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',

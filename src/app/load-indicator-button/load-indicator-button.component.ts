@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-load-indicator-button',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./load-indicator-button.component.css']
 })
 export class LoadIndicatorButtonComponent implements OnInit {
+
+  @Input('text') buttonText: string;
 
   constructor() { }
 

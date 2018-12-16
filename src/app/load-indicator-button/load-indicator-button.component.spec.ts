@@ -9,8 +9,9 @@ fdescribe('LoadIndicatorButtonComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LoadIndicatorButtonComponent ]
+      declarations: [LoadIndicatorButtonComponent]
     });
+    createComponent();
   }));
 
   beforeEach(() => {
@@ -22,6 +23,22 @@ fdescribe('LoadIndicatorButtonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should contain a button', () => {
+    expect(page.button).toBeTruthy();
+  });
+
+  it('should contain the passed in text as the button text', () => {
+    component.buttonText = 'Testing';
+    fixture.detectChanges();
+    expect(component.buttonText).toBe(page.button.textContent);
+    expect(page.button.textContent).toBe('Testing');
+  });
+
+  it('should emit a click event when button is clicked', () => {
+
+  });
+
   /**
    * This function creates our component and sets up our page
    */
@@ -37,12 +54,15 @@ fdescribe('LoadIndicatorButtonComponent', () => {
       fixture.detectChanges();
     });
   }
+
   // Create Page Class
   class Page {
 
     // getter properties that wait to query the DOM until called
+    get button() { return this.query<HTMLButtonElement>('[data-test="load-indicator-button"]'); }
 
-    constructor() {}
+    constructor() {
+    }
 
     //// query helpers ////
     private query<T>(selector: string): T {

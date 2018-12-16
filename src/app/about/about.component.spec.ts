@@ -6,19 +6,18 @@ import {GithubService} from '../services/github.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('AboutComponent', () => {
-  let page: Page
+  let page: Page;
   let component: AboutComponent;
-  let fixture: ComponentFixture<AboutComponent>;
-  // let stackoverflowServiceStub: partial<StackoverflowService>;
-  // let githubServiceStub: partial<GithubService>;
+  let fixture: ComponentFixture<AboutComponent>
+  let stackoverflowServiceStub: Partial<StackoverflowService>;
+  let githubServiceStub: Partial<GithubService>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
       declarations: [ AboutComponent ],
       providers: [ StackoverflowService, GithubService ]
-
-    })
+    });
   }));
 
  beforeEach(() => {
@@ -26,8 +25,8 @@ describe('AboutComponent', () => {
     createComponent();
 
     // create service stub
-    // stackoverflowServiceStub = {};
-    // githubServiceStub = {};
+    stackoverflowServiceStub = {};
+    githubServiceStub = {};
     // define elements
 
 

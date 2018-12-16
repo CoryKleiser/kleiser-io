@@ -10,11 +10,11 @@ import { WorkComponent } from './work/work.component';
 import { AboutComponent } from './about/about.component';
 import { StackoverflowService } from './services/stackoverflow.service';
 import { GithubService } from './services/github.service';
-import { EyeComponent } from './eye/eye.component';
 import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
 import { NavComponent } from './nav/nav.component';
+import { LoadIndicatorButtonComponent } from './load-indicator-button/load-indicator-button.component';
 
 
 @NgModule({
@@ -23,10 +23,10 @@ import { NavComponent } from './nav/nav.component';
     IntroComponent,
     WorkComponent,
     AboutComponent,
-    EyeComponent,
     ContactComponent,
     ForbiddenValidatorDirective,
     NavComponent,
+    LoadIndicatorButtonComponent,
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "cypress-dev": "cypress open",
-    "cypress": "cypress run -b chrome"
+    "cypress": "cypress run -b chrome",
+    "test-coverage": "ng test --watch=false --code-coverage && http-server -c-1 -o -p 9875 ./coverage"
   },
   "private": true,
   "dependencies": {

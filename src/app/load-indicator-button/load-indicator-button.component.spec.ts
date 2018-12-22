@@ -64,6 +64,13 @@ describe('LoadIndicatorButtonComponent', () => {
     expect(page.button.classList[1]).toBe('Testing');
   });
 
+  it('should set attributes to whatever is passed in for attributes', () => {
+    component.attributes = {'data-foo': 'TESTING'};
+    component.ngOnInit();
+    fixture.detectChanges();
+    expect(page.query('[data-foo="TESTING"]')).toBeTruthy();
+  })
+
   it('should update div background to whatever is passed in for dotColor', () => {
     component.dotColor = 'cyan';
     component.ngOnInit();
@@ -147,7 +154,7 @@ describe('LoadIndicatorButtonComponent', () => {
     }
 
     // query helpers
-    private query<T>(selector: string): T {
+    query<T>(selector: string): T {
       return fixture.nativeElement.querySelector(selector);
     }
 

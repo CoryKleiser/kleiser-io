@@ -5,6 +5,7 @@ import { ContactComponent } from './contact.component';
 import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
 import {ForbiddenValidatorDirective} from '../shared/forbidden-validator-directive.directive';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 
 // TODO:: Make these tests pass
 
@@ -19,7 +20,8 @@ describe('ContactComponent', () => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, HttpClientTestingModule ],
       declarations: [ ContactComponent, ForbiddenValidatorDirective ],
-      providers: [ {provide: EmailService, useValue: emailServiceStub} ]
+      providers: [ {provide: EmailService, useValue: emailServiceStub} ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     });
   }));
 
@@ -89,7 +91,8 @@ describe('ContactComponent', () => {
     expect(page.submitButton.disabled).toBe(true);
   });
 
-  fit('should disable submit button when there is no email', () => {
+  it('should disable submit button when there is no email', () => {
+    console.log(page.submitButton);
     setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
     setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
     setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);

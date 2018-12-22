@@ -10,6 +10,7 @@ import {StackoverflowService} from './services/stackoverflow.service';
 import {GithubService} from './services/github.service';
 import {EmailService} from './services/email.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {LoadIndicatorButtonComponent} from './load-indicator-button/load-indicator-button.component';
 describe('AppComponent', () => {
   let page: Page;
   let app: AppComponent;
@@ -24,7 +25,8 @@ describe('AppComponent', () => {
         IntroComponent,
         WorkComponent,
         AboutComponent,
-        ContactComponent
+        ContactComponent,
+        LoadIndicatorButtonComponent
       ],
       providers: [ StackoverflowService, GithubService, EmailService ]
     });

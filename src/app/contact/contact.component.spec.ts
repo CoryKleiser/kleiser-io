@@ -5,6 +5,9 @@ import { ContactComponent } from './contact.component';
 import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
 import {ForbiddenValidatorDirective} from '../shared/forbidden-validator-directive.directive';
+import {CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
+import {LoadIndicatorButtonComponent} from '../load-indicator-button/load-indicator-button.component';
+
 
 describe('ContactComponent', () => {
   let page: Page;
@@ -16,8 +19,9 @@ describe('ContactComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule, HttpClientTestingModule ],
-      declarations: [ ContactComponent, ForbiddenValidatorDirective ],
-      providers: [ {provide: EmailService, useValue: emailServiceStub} ]
+      declarations: [ ContactComponent, ForbiddenValidatorDirective, LoadIndicatorButtonComponent ],
+      providers: [ {provide: EmailService, useValue: emailServiceStub} ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     });
   }));
 
@@ -84,6 +88,7 @@ describe('ContactComponent', () => {
     setTextInputAndDetectChanges(page.emailInput, page.testEmailContent.email);
     setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
     setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);
+    fixture.detectChanges();
     expect(page.submitButton.disabled).toBe(true);
   });
 

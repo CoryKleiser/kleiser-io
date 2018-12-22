@@ -3,7 +3,6 @@ import {Component, Input, OnInit} from '@angular/core';
 import { Email } from '../types/email';
 
 import { EmailService } from '../services/email.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -17,6 +16,10 @@ export class ContactComponent implements OnInit {
   @Input() message: string;
   error: any = '';
 
+  emailStatus: string;
+
+  submitBtnAttrbutes: any;
+
   emailContent: Email;
   constructor(private emailService: EmailService) { }
 
@@ -27,14 +30,20 @@ export class ContactComponent implements OnInit {
       subject: '',
       message: ''
     };
+    this.emailStatus = 'dormant';
+    this.submitBtnAttrbutes = {
+      'data-test': 'contact-submit',
+    };
   }
 
   send() {
     this.emailService.sendEmail(this.emailContent)
       .subscribe( res => {
         if (res.statusCode !== 201) {
+          this.emailStatus = 'error';
           this.error = res;
         } else {
+          this.emailStatus = 'success';
           this.error = null;
         }
         setTimeout(() => this.error = '', 5000);

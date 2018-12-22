@@ -1,0 +1,64 @@
+/** Scope Styles when encapsulation is turned off **/
+
+#load-indicator-button {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+@keyframes fadein {
+  0% {opacity: 0}
+  100% {opacity: 1}
+}
+
+@keyframes loading1 {
+  0% {left: -40%}
+  30% {left: 35%}
+  67% {left: -40%}
+  100% {left: -40%}
+}
+
+@keyframes loading2 {
+  0% {left: -37.5%}
+  40% {left: 37.5%}
+  45% {left: 37.5%}
+  80% {left: -37.5%}
+  100% {left: -37.5%}
+}
+@keyframes loading3 {
+  0% {left: -35%}
+  50% {left: 40%}
+  55% {left: 40%}
+  100% {left: -35%}
+}
+
+#load-indicator-button div {
+  position: relative;
+  display: inline-block;
+  left: -40%;
+  width: 1rem;
+  max-height: 1rem;
+  margin: .25rem;
+  /*height: 100%;*/
+  background-color: black;
+  border-radius: 50%;
+  color: transparent;
+  animation: fadein .5s;
+}
+
+#load-indicator-button div:first-of-type {
+  left: -40%;
+  animation: loading1 3s ease .5s infinite, fadein .6s;
+}
+
+#load-indicator-button div:nth-of-type(2) {
+  left: -37.5%;
+  animation: loading2 3s ease .25s infinite, fadein .35s;
+}
+
+#load-indicator-button div:last-of-type {
+  left: -35%;
+  animation: loading3 3s ease 0s infinite, fadein .1s;
+
+
+}

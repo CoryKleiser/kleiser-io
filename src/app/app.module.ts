@@ -14,6 +14,7 @@ import { ContactComponent } from './contact/contact.component';
 import { EmailService } from './services/email.service';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
 import { NavComponent } from './nav/nav.component';
+import { LoadIndicatorButtonComponent } from './load-indicator-button/load-indicator-button.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NavComponent } from './nav/nav.component';
     ContactComponent,
     ForbiddenValidatorDirective,
     NavComponent,
+    LoadIndicatorButtonComponent,
   ],
   imports: [
     BrowserModule,

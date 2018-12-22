@@ -1,7 +1,7 @@
 <button
   (click)="clickHandler()"
   [innerHTML]="waiting ? sanitizeHtml(loadIndicator) : sanitizeHtml(buttonText) "
-  [disabled]="disabled"
+  [disabled]="disabled || currentLifecycle === 'waiting'"
   [class]="classString"
   id="load-indicator-button"
   class="btn"

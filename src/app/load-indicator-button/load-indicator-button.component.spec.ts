@@ -90,6 +90,12 @@ describe('LoadIndicatorButtonComponent', () => {
     expect(page.button.innerHTML).toBe(component.loadIndicator);
   });
 
+  it('should disable button while waiting for the response from the parent', () => {
+    component.currentLifecycle = 'waiting';
+    fixture.detectChanges();
+    expect(page.button.disabled).toBe(true);
+  })
+
   it('should update button text after current-lifecycle input is updated to "success"', () => {
     // set up buttonText and set component to waiting
     component.buttonText = 'click';

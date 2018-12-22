@@ -1,1 +1,6 @@
-<button data-test="load-indicator-button">{{ buttonText }}</button>
+<button
+  (click)="clickHandler()"
+  [innerHTML]="waiting ? sanitizeHtml(loadIndicator) : sanitizeHtml(buttonText) "
+  id="load-indicator-button"
+  class="btn"
+  data-test="load-indicator-button"></button>

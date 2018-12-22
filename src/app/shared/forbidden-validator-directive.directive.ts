@@ -10,8 +10,9 @@ export class ForbiddenValidatorDirective implements Validator {
   @Input('appForbiddenInput') forbiddenInput: string;
 
   validate(control: AbstractControl): {[key: string]: any} {
-    return this.forbiddenInput ? this.forbiddenInputValidator(new RegExp(this.forbiddenInput, 'i'))(control)
-      : null;
+    if (this.forbiddenInput) {
+      return this.forbiddenInputValidator(new RegExp(this.forbiddenInput, 'i'))(control);
+    }
   }
 
   forbiddenInputValidator(inputRe: RegExp): ValidatorFn {

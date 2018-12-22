@@ -84,7 +84,7 @@
       [current-lifecycle]="emailStatus"
       [class]="'btn btn-success col-sm-4 offset-sm-4'"
       [dot-color]="'rgba(255, 255, 255, 0.5)'"
-      data-test="contact-submit">
+      [customAttributes]="submitBtnAttrbutes">
     </app-load-indicator-button>
     <div *ngIf="this.error" class="alert alert-danger notification" role="alert">
       Whoops! Something went terribly wrong :(<br>Please try again later.

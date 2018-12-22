@@ -18,6 +18,8 @@ export class ContactComponent implements OnInit {
 
   emailStatus: string;
 
+  submitBtnAttrbutes: any;
+
   emailContent: Email;
   constructor(private emailService: EmailService) { }
 
@@ -29,6 +31,9 @@ export class ContactComponent implements OnInit {
       message: ''
     };
     this.emailStatus = 'dormant';
+    this.submitBtnAttrbutes = {
+      'data-test': 'contact-submit',
+    };
   }
 
   send() {

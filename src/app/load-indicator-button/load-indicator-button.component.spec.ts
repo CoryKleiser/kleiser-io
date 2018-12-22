@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoadIndicatorButtonComponent } from './load-indicator-button.component';
 
-fdescribe('LoadIndicatorButtonComponent', () => {
+describe('LoadIndicatorButtonComponent', () => {
   let page: Page;
   let component: LoadIndicatorButtonComponent;
   let fixture: ComponentFixture<LoadIndicatorButtonComponent>;
@@ -35,14 +35,55 @@ fdescribe('LoadIndicatorButtonComponent', () => {
     expect(page.button.textContent).toBe('Testing');
   });
 
+  it('should contain the show the passed in text when currentLifecycle is "dormant"', () => {
+    component.buttonText = 'Test';
+    component.currentLifecycle = 'dormant';
+    fixture.detectChanges();
+    expect(component.waiting).toBe(false);
+    expect(page.button.innerHTML).toBe('Test');
+  });
+
+  it('should be disabled when disabled evaluates to true', () => {
+    component.disabled = !false;
+    fixture.detectChanges();
+    expect(page.button.disabled).toBe(true);
+
+  });
+
+  it('should not be disabled when disabled evaluates to true', () => {
+    component.disabled = !true;
+    fixture.detectChanges();
+    expect(page.button.disabled).toBe(false);
+
+  });
+
+  it('should set class to whatever is passed in for classString', () => {
+    component.classString = 'Test Testing';
+    fixture.detectChanges();
+    expect(page.button.classList[0]).toBe('Test');
+    expect(page.button.classList[1]).toBe('Testing');
+  });
+
+  it('should update div background to whatever is passed in for dotColor', () => {
+    component.dotColor = 'cyan';
+    component.ngOnInit();
+    component.buttonText = 'click';
+    component.currentLifecycle = 'waiting';
+    fixture.detectChanges();
+    page.dots.forEach(el => {
+      expect(el.style.cssText.includes('background: cyan')).toBe(true);
+    });
+  });
+
   it('should update button text to loading indicator when process', () => {
     page.button.dispatchEvent(new Event('click'));
     fixture.detectChanges();
+    expect(component.currentLifecycle).toBe('waiting');
     expect(component.waiting).toBe(true);
     expect(page.button.innerHTML).toBe(component.loadIndicator);
   });
 
-  it('should update button text after processSuccessful input is updated to "success"', () => {
+  it('should update button text after current-lifecycle input is updated to "success"', () => {
     // set up buttonText and set component to waiting
     component.buttonText = 'click';
     component.currentLifecycle = 'waiting';
@@ -56,6 +97,29 @@ fdescribe('LoadIndicatorButtonComponent', () => {
     // what we're actually testing for
     expect(page.button.innerHTML).toBe(component.buttonText);
   });
+
+  it('should update button text after current-lifecycle input is updated to "error"', () => {
+    // set up buttonText and set component to waiting
+    component.buttonText = 'click';
+    component.currentLifecycle = 'waiting';
+    fixture.detectChanges();
+    // make sure component is waiting and text is updated to loadIndicator
+    expect(component.waiting).toBe(true);
+    expect(page.button.innerHTML).toBe(component.loadIndicator);
+    // change processSuccessful to success
+    component.currentLifecycle = 'success';
+    fixture.detectChanges();
+    // what we're actually testing for
+    expect(page.button.innerHTML).toBe(component.buttonText);
+  });
+
+
+
+
+
+
+
+
   /**
    * This function creates our component and sets up our page
    */
@@ -76,6 +140,7 @@ fdescribe('LoadIndicatorButtonComponent', () => {
 
     // getter properties that wait to query the DOM until called
     get button() { return this.query<HTMLButtonElement>('[data-test="load-indicator-button"]'); }
+    get dots() { return this.queryAll<HTMLButtonElement>('[data-test="load-indicator-button"] div'); }
 
     // spys...
     constructor() {

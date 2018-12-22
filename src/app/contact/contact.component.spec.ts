@@ -6,6 +6,8 @@ import {FormsModule} from '@angular/forms';
 import {EmailService} from '../services/email.service';
 import {ForbiddenValidatorDirective} from '../shared/forbidden-validator-directive.directive';
 
+// TODO:: Make these tests pass
+
 describe('ContactComponent', () => {
   let page: Page;
   let component: ContactComponent;
@@ -87,7 +89,7 @@ describe('ContactComponent', () => {
     expect(page.submitButton.disabled).toBe(true);
   });
 
-  it('should disable submit button when there is no email', () => {
+  fit('should disable submit button when there is no email', () => {
     setTextInputAndDetectChanges(page.nameInput, page.testEmailContent.name);
     setTextInputAndDetectChanges(page.subjectInput, page.testEmailContent.subject);
     setTextInputAndDetectChanges(page.messageInput, page.testEmailContent.message);

@@ -10,7 +10,10 @@ import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
 export class LoadIndicatorButtonComponent implements OnInit {
 
   @Input('text') buttonText: string;
-  @Input('success') currentLifecycle: 'dormant' | 'waiting' | 'success' | 'error';
+  @Input('current-lifecycle') currentLifecycle: 'dormant' | 'waiting' | 'success' | 'error';
+  @Input('disabled') disabled: boolean;
+  @Input('class') classString: string;
+  @Input('dot-color') dotColor: string;
   @Output() clicked = new EventEmitter;
 
   get waiting() {
@@ -22,12 +25,12 @@ export class LoadIndicatorButtonComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
-    this.loadIndicator = '<div>+</div><div>+</div><div>+</div>';
+    this.loadIndicator = `<div style="background:${this.dotColor}">+</div><div style="background:${this.dotColor}">+</div><div style="background:${this.dotColor}">+</div>`;
     this.currentLifecycle = 'dormant';
   }
 
   sanitizeHtml(html: string): SafeHtml {
-    return html;
+    return this.sanitizer.bypassSecurityTrustHtml(html);
   }
 
   clickHandler() {

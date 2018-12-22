@@ -16,6 +16,8 @@ export class ContactComponent implements OnInit {
   @Input() message: string;
   error: any = '';
 
+  emailStatus: string;
+
   emailContent: Email;
   constructor(private emailService: EmailService) { }
 
@@ -26,14 +28,17 @@ export class ContactComponent implements OnInit {
       subject: '',
       message: ''
     };
+    this.emailStatus = 'dormant';
   }
 
   send() {
     this.emailService.sendEmail(this.emailContent)
       .subscribe( res => {
         if (res.statusCode !== 201) {
+          this.emailStatus = 'error';
           this.error = res;
         } else {
+          this.emailStatus = 'success';
           this.error = null;
         }
         setTimeout(() => this.error = '', 5000);

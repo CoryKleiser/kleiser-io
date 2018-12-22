@@ -14,7 +14,7 @@ export class LoadIndicatorButtonComponent implements OnInit {
   @Input('current-lifecycle') currentLifecycle: 'dormant' | 'waiting' | 'success' | 'error';
   @Input('disabled') disabled: boolean;
   @Input('class') classString: string;
-  @Input('customAttributes') attributes: {any, writable: true};
+  @Input('customAttributes') attributes: object;
   @Input('dot-color') dotColor: string;
   @Output() clicked = new EventEmitter;
 

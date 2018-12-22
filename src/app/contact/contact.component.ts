@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
 
   emailStatus: string;
 
-  submitBtnAttrbutes: any;
+  submitBtnAttrbutes: object;
 
   emailContent: Email;
   constructor(private emailService: EmailService) { }

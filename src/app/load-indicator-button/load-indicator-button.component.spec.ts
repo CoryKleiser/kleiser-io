@@ -94,7 +94,7 @@ describe('LoadIndicatorButtonComponent', () => {
     component.currentLifecycle = 'waiting';
     fixture.detectChanges();
     expect(page.button.disabled).toBe(true);
-  })
+  });
 
   it('should update button text after current-lifecycle input is updated to "success"', () => {
     // set up buttonText and set component to waiting

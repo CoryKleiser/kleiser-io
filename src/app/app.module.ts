@@ -15,6 +15,8 @@ import { EmailService } from './services/email.service';
 import { ForbiddenValidatorDirective } from './shared/forbidden-validator-directive.directive';
 import { NavComponent } from './nav/nav.component';
 import { LoadIndicatorButtonComponent } from './load-indicator-button/load-indicator-button.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { LoadIndicatorButtonComponent } from './load-indicator-button/load-indic
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [StackoverflowService, GithubService, EmailService],
   bootstrap: [AppComponent]

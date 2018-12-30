@@ -7,7 +7,7 @@ section{
   background-image: url("../../assets/images/bluelake.jpg");
 }
 
-.card-img-top{
+.card-img-top-container{
   max-width: 128px;
 }
 

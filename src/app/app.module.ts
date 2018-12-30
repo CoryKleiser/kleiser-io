@@ -17,6 +17,8 @@ import { NavComponent } from './nav/nav.component';
 import { LoadIndicatorButtonComponent } from './load-indicator-button/load-indicator-button.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { DeferLoadDirective } from './defer-load.directive';
+import { DeferLoadImageComponent } from './defer-load-image/defer-load-image.component';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { environment } from '../environments/environment';
     ForbiddenValidatorDirective,
     NavComponent,
     LoadIndicatorButtonComponent,
+    DeferLoadDirective,
+    DeferLoadImageComponent,
   ],
   imports: [
     BrowserModule,

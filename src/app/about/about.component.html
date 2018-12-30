@@ -16,7 +16,13 @@
       <h3 class="text-center">Check me out on some other sites</h3>
     <div id="online" class="row">
       <div id="stackoverflow" class="card col-sm m-3" *ngIf="soUserInfo && soTopTags">
-        <img src="{{soUserInfo.profile_image}}" class="card-img-top rounded-circle mx-auto pt-4" data-test="so-img" alt="Cory Kleiser's StackOverflow Profile Picture.">
+        <div class="card-img-top-container mx-auto">
+          <app-defer-load-image
+            [src]="soUserInfo.profile_image"
+            [class]="'card-img-top rounded-circle mx-auto mt-4'"
+            [alt]="'Cory Kleiser\'s StackOverflow Profile Picture.'"
+            [data-test]="'so-img'"></app-defer-load-image>
+        </div>
         <div class="card-body d-flex flex-column">
           <h4 data-test="so-header">{{soUserInfo.display_name}} on StackOverflow!</h4>
           <h5 class="card-text p-3">Reputation: <b>{{soUserInfo.reputation}}</b></h5>
@@ -39,7 +45,12 @@
         </div>
       </div>
       <div id="github" class="card col-sm m-3" *ngIf="githubUserInfo && githubRepos">
-        <img src="{{githubUserInfo.avatar_url}}" class="card-img-top rounded-circle mx-auto pt-4" alt="Cory Kleiser's StackOverflow Profile Picture.">
+        <div class="card-img-top-container mx-auto">
+          <app-defer-load-image
+            [src]="githubUserInfo.avatar_url"
+            [class]="'card-img-top rounded-circle mt-4'"
+            [alt]="'Cory Kleiser\'s StackOverflow Profile Picture.'"></app-defer-load-image>
+        </div>
         <div class="card-body d-flex flex-column">
           <h4 class="card-title" data-test="gh-header">{{githubUserInfo.name}} on GitHub!</h4>
           <h5 class="cart-text p-3">General Info</h5>

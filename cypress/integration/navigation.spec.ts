@@ -25,7 +25,7 @@ describe('Navigation Tests', () => {
   it('scrolls to work when user clicks Work nav item', () => {
     cy.get('[data-test=nav-toggle]').trigger('mouseover');
     cy.get('[data-test=nav-work-item]').click();
-    cy.wait(1000).then(() => {
+    cy.wait(1500).then(() => {
       cy.get('[data-test=work-section]').then($el => {
         expect(Math.floor($el[0].getBoundingClientRect().top)).to.equal(0);
       });

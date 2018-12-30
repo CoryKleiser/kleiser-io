@@ -4,6 +4,7 @@ import { AboutComponent } from './about.component';
 import {StackoverflowService} from '../services/stackoverflow.service';
 import {GithubService} from '../services/github.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {DeferLoadImageComponent} from '../defer-load-image/defer-load-image.component';
 
 describe('AboutComponent', () => {
   let page: Page;
@@ -15,7 +16,7 @@ describe('AboutComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientTestingModule ],
-      declarations: [ AboutComponent ],
+      declarations: [ AboutComponent, DeferLoadImageComponent ],
       providers: [ StackoverflowService, GithubService ]
     });
   }));

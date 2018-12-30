@@ -11,6 +11,7 @@ import {GithubService} from './services/github.service';
 import {EmailService} from './services/email.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {LoadIndicatorButtonComponent} from './load-indicator-button/load-indicator-button.component';
+import {DeferLoadImageComponent} from './defer-load-image/defer-load-image.component';
 describe('AppComponent', () => {
   let page: Page;
   let app: AppComponent;
@@ -26,7 +27,8 @@ describe('AppComponent', () => {
         WorkComponent,
         AboutComponent,
         ContactComponent,
-        LoadIndicatorButtonComponent
+        LoadIndicatorButtonComponent,
+        DeferLoadImageComponent
       ],
       providers: [ StackoverflowService, GithubService, EmailService ]
     });

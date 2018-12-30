@@ -35,7 +35,7 @@
             <p class="list-group-item d-flex justify-content-between align-items-center list-group-item-action">Bronze
               <span class="badge badge-primary badge-pill badge-bronze">{{soUserInfo.badge_counts.bronze}}</span></p>
           </div>
-          <a href="{{soUserInfo.link}}" target="_blank" class="btn btn-primary btn-block mt-auto" title="Check out Cory Kleiser's StackOverflow profile">Check It Out!</a>
+          <a href="{{soUserInfo.link}}" target="_blank" rel="noopener" class="btn btn-primary btn-block mt-auto" title="Check out Cory Kleiser's StackOverflow profile">Check It Out!</a>
         </div>
       </div>
       <div id="github" class="card col-sm m-3" *ngIf="githubUserInfo && githubRepos">
@@ -52,10 +52,10 @@
           <h5 class="card-text p-3">Notable Repositories</h5>
           <ul class="list-group card-text pb-3">
             <li *ngFor="let repo of githubRepos" class="list-group-item list-group-item-action">{{repo.name}}
-              <a href="{{repo.html_url}}" target="_blank" title="Navigate to {{repo.name}} on Github" class="btn btn-sm btn-primary float-right"><span class="oi oi-external-link"></span></a>
+              <a href="{{repo.html_url}}" target="_blank" rel="noopener" title="Navigate to {{repo.name}} on Github" class="btn btn-sm btn-primary float-right"><span class="oi oi-external-link"></span></a>
             </li>
           </ul>
-          <a href="{{githubUserInfo.html_url}}" target="_blank" class="btn btn-primary mt-auto" title="Check out Cory Kleiser's Github profile">Check It Out!</a>
+          <a href="{{githubUserInfo.html_url}}" target="_blank" rel="noopener" class="btn btn-primary mt-auto" title="Check out Cory Kleiser's Github profile">Check It Out!</a>
         </div>
       </div>
     </div>

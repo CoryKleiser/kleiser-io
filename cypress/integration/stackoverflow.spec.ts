@@ -11,8 +11,9 @@ describe('StackOverflow Section Tests', () => {
     cy.get('[data-test=top-tags]')
       .should('have.length', 4);
   });
-  it('displays user image on load', () => {
-    cy.get('#stackoverflow > .card-img-top').should('have.attr', 'src').and('include', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/99/MarioSMBW.png/220px-MarioSMBW.png')
+  it('displays user image when image is in view', () => {
+    cy.get('[data-test=so-img-container]').scrollIntoView()
+    cy.get('[data-test=so-img').should('have.attr', 'src').and('include', 'https://upload.wikimedia.org/wikipedia/en/thumb/9/99/MarioSMBW.png/220px-MarioSMBW.png')
   });
   it('displays user name on load', () => {
     cy.get('[data-test=so-header]').contains('Mario');

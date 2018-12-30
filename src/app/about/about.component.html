@@ -16,7 +16,7 @@
       <h3 class="text-center">Check me out on some other sites</h3>
     <div id="online" class="row">
       <div id="stackoverflow" class="card col-sm m-3" *ngIf="soUserInfo && soTopTags">
-        <div class="card-img-top-container mx-auto">
+        <div class="card-img-top-container mx-auto" data-test="so-img-container">
           <app-defer-load-image
             [src]="soUserInfo.profile_image"
             [class]="'card-img-top rounded-circle mx-auto mt-4'"

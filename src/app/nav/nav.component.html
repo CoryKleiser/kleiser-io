@@ -2,6 +2,5 @@
 <ul class="list-group" *ngIf="showNav===true" (mouseleave)="showNav = false" data-test="nav-list">
   <li (click)="moveToHome()" (keyup.enter)="moveToHome()" class="list-group-item list-group-item-active" tabindex="0" data-test="nav-home-item">Home</li>
   <li (click)="moveToAbout()" (keyup.enter)="moveToAbout()" class="list-group-item list-group-item-active" tabindex="0" data-test="nav-about-item">About</li>
-  <li (click)="moveToWork()" (keyup.enter)="moveToWork()" class="list-group-item list-group-item-active" tabindex="0" data-test="nav-work-item">Work</li>
   <li (click)="moveToContact()" (keyup.enter)="moveToContact()" (blur)="showNav = false" class="list-group-item list-group-item-active" tabindex="0" data-test="nav-contact-item">Contact</li>
 </ul>
